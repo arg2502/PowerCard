@@ -11,11 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8bb3845a7c0784498ef11b07d3dee9, type: 3}
   m_Name: Guynormous
   m_EditorClassIdentifier: 
-  name: Guynormous
-  effect: When this card defeats a denigen, if the carry over damage is less than
-    10 points, you may choose to convert the carry over to SH points.
-  stars: 2
-  rarity: 0
-  atk: 48
-  sh: 0
-  types: 02000000
+  key: guynormous
+  image: {fileID: 0}

@@ -11,10 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8bb3845a7c0784498ef11b07d3dee9, type: 3}
   m_Name: Solvienta
   m_EditorClassIdentifier: 
-  name: Solvienta
-  effect: When played, change the type of one other denigen, excluding RNB type.
-  stars: 2
-  rarity: 0
-  atk: 28
-  sh: 20
-  types: 00000000
+  key: solvienta
+  image: {fileID: 0}

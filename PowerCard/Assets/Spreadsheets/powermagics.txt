@@ -1,0 +1,68 @@
+key	Name	Type	Effect
+magictrick	Magic Trick	Spell	This card can be discarded from your hand or field to draw one card. When this card is destroyed, draw one card.
+odessey	Odessey Summon	Spell	Special summon a one or a two star.
+edge	Edge of the Page	Field	For 2 turns, all players can sacrifice cards from their hand instead of the field to summon a denigen.
+balancing	Balancing Wager	Spell	Both players shuffle their hands into their decks and draw 5 cards. (Cannot use this card if it is the only one in your hand)
+skultimatum	Skultimatum	Spell	Destroy one denigen on the field. (3 star or lower)
+bribe	The Bribe	Spell	Pay 7pp to draw 3 cards, or 3pp to draw 2.
+jupitersmask	Jupiter's Mask	Spell	The Shield of every denigen on your side of the field is increased by 5.
+kaobolt	Kaobolt	Spell	Nullify the attack of one denigen. This includes all attacking the denigen may partake in on its turn. May only be used in reaction to an attack, and not preemptively.
+reflecto	Reflecto-Blast	Spell	Stops the attack and destroys the attacking denigen. (Flip effect only)
+infinity	Infinity Keyboard	Equip	Add 1 ATK & SH for every denigen on the field.
+sunstag	Sunstag Coffee	Equip	Gain 5 ATK for every 3 Star or higher on the field. Includes facedown cards.
+requanta	Requanta	Equip	Summon a 1 Star denigen to the field.
+antimagic	Antimagic Lantern	Spell	Negate the effect of an opponent's power magic and destroy it. Only applies to Power Magics which have been or are being activated. (Flip Effect optional)
+friendship	Friendship	Field	For 3 turns, anyone who inflicts damage to an opponent's power points will receive the same amount of damage to their own.
+paradoxgem	Paradox Gem	Spell	Summon one Power Magic, that belongs to you, to your hand from your deck or discard pile.
+helter	Helter Skelter's Dance Club	Field	While this card is on the field, reduce the shield of all denigens by 20.
+equipswitch	Equip Switch	Spell	All or some Equip power magics that are attached to one specific denigen could be transferred to a different denigen. Can be used as a Flip Effect if the original denigen that held the equip card(s) is destroyed.
+jestersmask	Jester's Mask	Spell	Flip Effect: If a weakness of your denigen is exploited, draw a number of cards equal to the attacker's star count.
+augmented	Augmented Dagger	Equip	Increase the attack of one denigen by 5.
+beezlebugs	Beezlebug's Poison	Spell	Flip Effect only: Stop the attack and end the opponent's attack phase.
+chickamask	Chicka's Mask	Equip	Increase the attributes of one denigen by 18 each. On the following turn the denigen must be used in a summon or discarded before the attack phase.
+symmetrical	Symmetrical Summoning	Spell	Flip Effect only: If your field is open, and your opponent normal summons a denigen, special summon a denigen of the same level or lower.
+stardust	Stardust	Spell	The number of stars a denigen has is equal to the worth of its tribute.
+doralasstaff	Dorala's Staff	Spell	Special summon a 2 star for 6pp.
+claudius	Claudius	Spell	Switch the ATK & SH of any denigen on the field.
+acardforacard	A Card for a Card	Spell	Discard one card from your hand. Your opponents do the same.
+damagecube	Damage Cube	Field	For 2 turns, all power point damage is counted up. After 2 turns, the player with the fewest amount of cards in the discard pile, who participated in the attacking, receives the cummulative damage that is counted.
+thanatomancy	Thanatomancy	Spell	Special summon a denigen from the discard pile for twice the star value in pp.
+broken	Broken Heroes	Spell	Take one denigen from your discard pile and place it in your hand, or pay half of your pp and place it on the field.
+resurrection	Resurrection	Spell	Immediately summon the most recently destroyed denigen to your field, if it is a 1 or 2 star. If it is a 3 star or higher, special summon it from your discard on your next turn.
+temporalcrescendo	Temporal Crescendo	Spell	For 2 turns, all your denigens' attacks, including denigens played after this card, are increased by 8.
+spellsong	Spellsong	Spell	Summon a 3 star denigen to your field for 10pp.
+shards	Shards of Lunara	Equip	Allows one denigen (3 stars or less) to attack twice each turn.
+nineveh	Nineveh Candle	Spell	For 2 turns, all of your denigens' resistances are doubled.
+haygliem	Haygliem Ring	Equip	Increase the attack of one of your denigen's attack by 9.
+pennicasorb	Pennica's Orb	Spell	The player draws from his deck until they receive a power magic. For every denigen drawn, gain 5 power points.
+eenabshelp	Eenab's Help	Spell	If you are losing, put one card in your hand from your deck or discard pile.
+wintaresbloom	Wintare's Bloom	Field	For 2 turns, all weaknesses and resistances are reversed.
+jauntydirk	Jaunty Dirk	Equip	Add 9 points to a denigen's attack.
+fallingstar	Falling Star	Spell	Discard one less card to summon a denigen.
+watchfuleye	Watchful Eye	Field	When facedowns are played, the player loses 6pp.
+antimatter	Antimatter Bible	Spell	Call one of your denigens to your hand for 3pp from any location.
+protectivegale	Protective Gale	Spell	Protects your denigens from any attacks for one turn.
+gasmask	Gas Mask	Equip	The denigen with this card is resistant to all types (excluding RNB type).
+tungstensshield	Tungsten's Shield	Equip	Protect the denigen to whom this card is equipped for one destruction.
+platnumenforcement	Platnum Enforcement	Equip	Increases ATK & SH by 1 for each power magic on the field.
+tacitusbow	Tacitus' Bow	Equip	Allow a 1 or 2 star denigen to attack one opponent directly for one turn.
+deathssand	Death's Sand	Spell	If you are losing, return the denigen on the top of your discard pile back to the field.
+darkgems	Dark Gems	Field	Each player may now perform additional normal summons, but must pay 10pp for every additional normal summon.
+dualstrike	Dual Strike	Spell	Combine the attack of two of your denigens. This counts as both of their attacks. Strengths and weaknesses are void.
+truthhex	Truth Hex	Field	No facedowns may be played while this card is in effect. Facedown cards which are already on the field, however, may be utilized.
+demonsblood	Demon's Blood	Equip	Refreshes denigen effects, allowing them to be used again. Can be used to "stack" certain stat bonuses, but not ones which rely on changing conditions.
+chainmailscarf	Chainmail Scarf	Equip	Raise the shield of any one star by 10, two star by 9, three star by 7, four star by 5, or five star by 4.
+goldenteckit	Golden Teckit	Field	For 2 turns, everyone can make 2 normal summons on their turn.
+gazeofjqui	Gaze of J'qui	Spell	Paralyzes the attacking denigen for the amount of turns equivilent to the number of stars on the attacker.
+confinement	Scroll of Confinement	Spell	Look at and rearrange the top 5 cards of an opponent's deck.
+suncurse	Sun Curse	Field	All denigens become resistant to all types, excluding RNB and PDX.
+mastery	Magical Mastery	Equip	Flip Effect only: Reduce any attack by 10 points, and end your opponent's attack phase.
+quantum	Quantum Rubberband Ball	Equip	Attach this card to any denigen. The denigen will subsequently be able to attack directly for 3 turns. This card can be nullified by other power magics.
+nope	NOPE	Spell	Flip Effect only: Negates an opponent's normal summon.
+impending	Impending Doom	Spell	Assign this card to any denigen on the field. If the denigen does not attack the turn consecutive to when it was attached, destroy it. The card to whom this is attached may not be discarded for a summon.
+aquabomb	Aqua Bomb	Spell	Inflict 7pp of direct damage to an opponent.
+auorus	Auorus Absorbus	Spell	Each player discards one card from the field.
+charitable	Charitable Earns	Spell	Gain 15pp, but all opponents gain 5pp.
+excessive	Excessive Range	Equip	One of your denigens can bypass your opponents denigen(s) during your battle phase for that turn only. Limited to 50pp.
+hypersonic	Hypersonic Fuel	Equip	Sacrifice 15pp to increase a denigen's shield by 15.
+paradoxsword	Paradox Sword	Equip	Transform denigen to whom this card is equipped to paradox type.

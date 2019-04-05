@@ -11,10 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8bb3845a7c0784498ef11b07d3dee9, type: 3}
   m_Name: Sand Witch
   m_EditorClassIdentifier: 
-  name: Sand Witch
-  effect: 
-  stars: 1
-  rarity: 0
-  atk: 25
-  sh: 9
-  types: 06000000
+  key: sandwitch
+  image: {fileID: 0}

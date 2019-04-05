@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Card", menuName = "Cards/Denigen")]
-public class DenigenData : ScriptableObject
-{
-
-    public new string name;
-    [TextArea]
-    public string effect;
-    public int stars;
+[CreateAssetMenu(fileName = "New Denigen", menuName = "Cards/Denigen")]
+public class DenigenData : CardData
+{    
+    int stars;
     public enum Rarity { COMMON, UNCOMMON, RARE, JUDGE }
-    public Rarity rarity;
-    public int atk;
-    public int sh;
+    Rarity rarity;
+    int atk;
+    int sh;
     public enum Type
     {
         ASTRAL, FIRE, WATER, GRASS, ELECTRIC,
@@ -21,7 +17,7 @@ public class DenigenData : ScriptableObject
         LIGHT, DARK, DRAGON, FLYING, PLATNUM,
         PARADOX, RAINBOW
     }
-    public List<Type> types;
+    List<Type> types;
     List<Type> weaknesses;
     List<Type> resistances;
 
@@ -64,8 +60,63 @@ public class DenigenData : ScriptableObject
     };
     public void Init()
     {
+        DecipherSpreadsheet();
         FillWeaknessesAndResistances();
     }
+
+    void DecipherSpreadsheet()
+    {
+        // find the row that matches the key
+        if(GameControl.control.denigenKeys.ContainsKey(key))
+        {
+            var data = GameControl.control.denigenKeys[key];
+
+            // key, name, stars, type, atk, sh, effect
+
+            // 0 is key -- ignore
+            // add name
+            name = data[1];
+            stars = int.Parse(data[2]);
+            types = DecipherTypes(data[3]);
+            atk = int.Parse(data[4]);
+            sh = int.Parse(data[5]);
+            effect = data[6];
+
+        }
+    }
+
+    List<Type> DecipherTypes(string typedata)
+    {
+        // split data by '/' in case of dual type
+        var typesArray = typedata.Split('/');
+
+        List<Type> myTypes = new List<Type>();
+        foreach(var t in typesArray)
+        {
+            switch(t)
+            {
+                case "AST": myTypes.Add(Type.ASTRAL); break;
+                case "FIR": myTypes.Add(Type.FIRE); break;
+                case "WAT": myTypes.Add(Type.WATER); break;
+                case "GRS": myTypes.Add(Type.GRASS); break;
+                case "ETR": myTypes.Add(Type.ELECTRIC); break;
+                case "ICE": myTypes.Add(Type.ICE); break;
+                case "RCK": myTypes.Add(Type.ROCK); break;
+                case "PSN": myTypes.Add(Type.POISON); break;
+                case "PSY": myTypes.Add(Type.PSYCHIC); break;
+                case "MYS": myTypes.Add(Type.MYSTERY); break;
+                case "LGT": myTypes.Add(Type.LIGHT); break;
+                case "DRK": myTypes.Add(Type.DARK); break;
+                case "DRG": myTypes.Add(Type.DRAGON); break;
+                case "FLY": myTypes.Add(Type.FLYING); break;
+                case "PLT": myTypes.Add(Type.PLATNUM); break;
+                case "PDX": myTypes.Add(Type.PARADOX); break;
+                case "RNB": myTypes.Add(Type.RAINBOW); break;
+            }
+        }
+        return myTypes;
+    }
+
     public void FillWeaknessesAndResistances()
     {
         weaknesses = new List<Type>();
