@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Denigen : MonoBehaviour {
+public class Denigen : Card {
 
-    public DenigenData data;
+    public DenigenData data;    
 
 	// Use this for initialization
 	void Start () {
-        var instance = Instantiate(data);
-        instance.Init();
-        instance.Print();
+        var dataInstance = Instantiate(data);
+        dataInstance.Init();
+        //instance.Print();
+        portraitImage.sprite = data.image;
+        nameText.text = data.name;
     }
 	
 }

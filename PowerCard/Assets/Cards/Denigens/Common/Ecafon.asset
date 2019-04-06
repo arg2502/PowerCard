@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8bb3845a7c0784498ef11b07d3dee9, type: 3}
-  m_Name: Guynormous
+  m_Name: Ecafon
   m_EditorClassIdentifier: 
-  key: guynormous
-  image: {fileID: 0}
+  key: ecafon
+  image: {fileID: 21300000, guid: 19b9d0b5fbd392d4ab870e8e46663b45, type: 3}
