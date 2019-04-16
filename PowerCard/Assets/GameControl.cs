@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameControl : MonoBehaviour {
 
     public static GameControl control;
+    public static CardManager CardManager;
 
     public TextAsset denigenSpeadsheet;
     public TextAsset powermagicSpreadsheet;
@@ -14,11 +15,14 @@ public class GameControl : MonoBehaviour {
     public Dictionary<string, string[]> denigenKeys;
     public Dictionary<string, string[]> powermagicKeys;
 
+    public GameObject CardPrefab;
+
     private void Awake()
     {
         if (control == null)
         {
             control = this;
+            CardManager = new CardManager();
         }
         else
             Destroy(this);

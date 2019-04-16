@@ -8,4 +8,6 @@ public class CardData : ScriptableObject
     protected string effect;
     public string key;
     public Sprite image;
+
+    public virtual void Init() { }
 }

@@ -58,7 +58,7 @@ public class DenigenData : CardData
         {Type.FLYING, new List<Type>(){Type.FIRE, Type.GRASS} },
         {Type.PLATNUM, new List<Type>(){Type.DRAGON, Type.ELECTRIC} }
     };
-    public void Init()
+    public override void Init()
     {
         DecipherSpreadsheet();
         FillWeaknessesAndResistances();
