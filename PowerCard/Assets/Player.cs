@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
     {
         PopulateDeck();
         ShuffleDeck();
-        PrintDeck();
+        //PrintDeck();
     }
 
     void PopulateDeck()

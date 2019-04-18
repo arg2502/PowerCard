@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7525fa7be4c317447a4ade38d321e181, type: 3}
+  m_Name: TypeIconsDatabase
+  m_EditorClassIdentifier: 
+  ASTRAL: {fileID: 21300000, guid: 1a8adf52a65c26a4eac1816aaa5fe32e, type: 3}
+  FIRE: {fileID: 21300000, guid: aab1590efa79f744db4293ef55b0bf2c, type: 3}
+  WATER: {fileID: 21300000, guid: 78afafc39638ed040be517c24ae3fadd, type: 3}
+  GRASS: {fileID: 21300000, guid: 71fba0ca9cb9f46419a1329f2acac890, type: 3}
+  ELECTRIC: {fileID: 21300000, guid: 290160725fa3bad4581a915545216536, type: 3}
+  ICE: {fileID: 21300000, guid: 115a2722dd6705444aa4097c7b9b1f27, type: 3}
+  ROCK: {fileID: 21300000, guid: af3897cdb88aca04bab1cd361b51d06e, type: 3}
+  POISON: {fileID: 21300000, guid: c5bceeddd4a81b64b99ce536284ceb0d, type: 3}
+  PSYCHIC: {fileID: 21300000, guid: ba54975229f47244bb1048dc77c8f50b, type: 3}
+  MYSTERY: {fileID: 21300000, guid: 46f4b9b492632ea4da44148777496b1d, type: 3}
+  LIGHT: {fileID: 21300000, guid: d35853d52217ecf42a114a3c051a1c86, type: 3}
+  DARK: {fileID: 21300000, guid: 0f98eeed98ca52c41a52ecd1fcea75f9, type: 3}
+  DRAGON: {fileID: 21300000, guid: b61b3f88b4de08242925b4a2e913b773, type: 3}
+  FLYING: {fileID: 21300000, guid: 8fe36817ff0149d4fbd91b485b3c5445, type: 3}
+  PLATNUM: {fileID: 21300000, guid: 943031a8d6646f4439a65ade23af002b, type: 3}
+  PARADOX: {fileID: 21300000, guid: c88d1d0ec874f21488d01fa3ab829dd1, type: 3}
+  RAINBOW: {fileID: 21300000, guid: 907d2b420550e1f4eac2903295322abc, type: 3}

@@ -8,8 +8,8 @@ public class DenigenData : CardData
     int stars;
     public enum Rarity { COMMON, UNCOMMON, RARE, JUDGE }
     Rarity rarity;
-    int atk;
-    int sh;
+    public int Atk { get; set; }
+    public int Sh { get; set; }
     public enum Type
     {
         ASTRAL, FIRE, WATER, GRASS, ELECTRIC,
@@ -78,8 +78,8 @@ public class DenigenData : CardData
             name = data[1];
             stars = int.Parse(data[2]);
             types = DecipherTypes(data[3]);
-            atk = int.Parse(data[4]);
-            sh = int.Parse(data[5]);
+            Atk = int.Parse(data[4]);
+            Sh = int.Parse(data[5]);
             effect = data[6];
 
         }
