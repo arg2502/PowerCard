@@ -458,6 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e63742eacb103f4689685e0b1784f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TypeIconsDatabase: {fileID: 0}
   denigenSpeadsheet: {fileID: 4900000, guid: 2a701c7e41656ef4583aef657faa2557, type: 3}
   powermagicSpreadsheet: {fileID: 4900000, guid: ef8c71df80e54824fbc0bd6057083647,
     type: 3}

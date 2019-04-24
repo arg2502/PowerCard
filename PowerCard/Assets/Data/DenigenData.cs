@@ -17,9 +17,10 @@ public class DenigenData : CardData
         LIGHT, DARK, DRAGON, FLYING, PLATNUM,
         PARADOX, RAINBOW
     }
-    List<Type> types;
-    List<Type> weaknesses;
-    List<Type> resistances;
+    public List<Type> Types { get; set; }
+    public List<Type> Weaknesses { get; set; }
+    public List<Type> Resistances { get; set; }
+
 
     Dictionary<Type, List<Type>> TypeWeaknesses = new Dictionary<Type, List<Type>>()
     {
@@ -77,7 +78,7 @@ public class DenigenData : CardData
             // add name
             name = data[1];
             stars = int.Parse(data[2]);
-            types = DecipherTypes(data[3]);
+            Types = DecipherTypes(data[3]);
             Atk = int.Parse(data[4]);
             Sh = int.Parse(data[5]);
             effect = data[6];
@@ -119,10 +120,10 @@ public class DenigenData : CardData
 
     public void FillWeaknessesAndResistances()
     {
-        weaknesses = new List<Type>();
-        resistances = new List<Type>();
+        Weaknesses = new List<Type>();
+        Resistances = new List<Type>();
 
-        foreach (var t in types)
+        foreach (var t in Types)
         {
             // make sure it's normal type -- Paradox and Rainbow will be special cases
             if (TypeWeaknesses.ContainsKey(t))
@@ -131,8 +132,8 @@ public class DenigenData : CardData
                 {
                     // do not add if the weakness is the same as the denigen's types
                     // do not add if we already have the weakness added
-                    if (!types.Contains(w) && !weaknesses.Contains(w))
-                        weaknesses.Add(w);
+                    if (!Types.Contains(w) && !Weaknesses.Contains(w))
+                        Weaknesses.Add(w);
                 }
             }
             if (TypeResistances.ContainsKey(t))
@@ -140,24 +141,24 @@ public class DenigenData : CardData
                 foreach (var r in TypeResistances[t])
                 {
                     // do not add if we already have the resistance added
-                    if (!resistances.Contains(r))
-                        resistances.Add(r);
+                    if (!Resistances.Contains(r))
+                        Resistances.Add(r);
                 }
             }
         }
 
         // remove weakness if its the same type as the denigen
-        foreach(var t in types)
+        foreach(var t in Types)
         {
-            if (weaknesses.Contains(t))
-                weaknesses.Remove(t);
+            if (Weaknesses.Contains(t))
+                Weaknesses.Remove(t);
         }
 
         // remove any weakness that is also in resistance
-        foreach (var r in resistances)
+        foreach (var r in Resistances)
         {
-            if (weaknesses.Contains(r))
-                weaknesses.Remove(r);
+            if (Weaknesses.Contains(r))
+                Weaknesses.Remove(r);
         }
     }
 
@@ -165,13 +166,13 @@ public class DenigenData : CardData
     {
         Debug.Log("Name: " + name);
         Debug.Log("types: ");
-        foreach (var t in types)
+        foreach (var t in Types)
             Debug.Log(t);
         Debug.Log("Weaknesses: ");
-        foreach (var w in weaknesses)
+        foreach (var w in Weaknesses)
             Debug.Log(w);
         Debug.Log("Resistances: ");
-        foreach (var r in resistances)
+        foreach (var r in Resistances)
             Debug.Log(r);
     }
 }

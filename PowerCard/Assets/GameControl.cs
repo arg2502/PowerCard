@@ -6,6 +6,7 @@ public class GameControl : MonoBehaviour {
 
     public static GameControl control;
     public static CardManager CardManager;
+    public TypeIconsDatabase TypeIconsDatabase;
 
     public TextAsset denigenSpeadsheet;
     public TextAsset powermagicSpreadsheet;
@@ -23,6 +24,7 @@ public class GameControl : MonoBehaviour {
         {
             control = this;
             CardManager = new CardManager();
+            TypeIconsDatabase = Resources.Load<TypeIconsDatabase>("TypeIconsDatabase");
         }
         else
             Destroy(this);

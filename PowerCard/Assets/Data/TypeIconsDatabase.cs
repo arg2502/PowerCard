@@ -13,11 +13,30 @@ public class TypeIconsDatabase : ScriptableObject {
         ICE, ROCK, POISON, PSYCHIC, MYSTERY,
         LIGHT, DARK, DRAGON, FLYING, PLATNUM,
         PARADOX, RAINBOW;
-
-    public Dictionary<DenigenData.Type, Sprite> typeDatabase;
-    private void Awake()
-    {
-        typeDatabase = new Dictionary<DenigenData.Type, Sprite>() { };
     
+    public Sprite GetTypeSprite(DenigenData.Type _type)
+    {
+        switch(_type)
+        {
+            case DenigenData.Type.ASTRAL: return ASTRAL;
+            case DenigenData.Type.FIRE: return FIRE;
+            case DenigenData.Type.WATER: return WATER;
+            case DenigenData.Type.GRASS: return GRASS;
+            case DenigenData.Type.ELECTRIC: return ELECTRIC;
+            case DenigenData.Type.ICE: return ICE;
+            case DenigenData.Type.ROCK: return ROCK;
+            case DenigenData.Type.POISON: return POISON;
+            case DenigenData.Type.PSYCHIC: return PSYCHIC;
+            case DenigenData.Type.MYSTERY: return MYSTERY;
+            case DenigenData.Type.LIGHT: return LIGHT;
+            case DenigenData.Type.DARK: return DARK;
+            case DenigenData.Type.DRAGON: return DRAGON;
+            case DenigenData.Type.FLYING: return FLYING;
+            case DenigenData.Type.PLATNUM: return PLATNUM;
+            case DenigenData.Type.PARADOX: return PARADOX;
+            case DenigenData.Type.RAINBOW: return RAINBOW;
+            default: Debug.LogError("Type Icon not found."); return null;
+        }
     }
+
 }
