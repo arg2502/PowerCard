@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour {
 
+    protected Player player;
+
     public Image portraitImage;
     public Text nameText;
 
@@ -21,19 +23,36 @@ public class Card : MonoBehaviour {
     public Image weakness2Image;
     public Image weakness3Image;
     public Image weakness4Image;
+    public int Stars
+    {
+        get
+        {
+            var inst = data as DenigenData;
+            return inst.Stars;
+        }
+    }
 
-    CardData data;
+    public CardData data;
     CardData dataInstance;
-    
-    public void Init(CardData _data)
+
+    float yRotate = -2;
+
+    public bool CurrentCard { get; set; }
+
+    public enum Position { HAND, FIELD }
+    public Position position;
+
+    public void Init(CardData _data, Player _player)
     {
         data = _data;
         dataInstance = Instantiate(data);
-        
+
+        transform.rotation = Quaternion.Euler(0, yRotate, 0);
             
         dataInstance.Init();
         AssignUI();
-        
+
+        player = _player;
     }
 
     void AssignUI()
@@ -76,4 +95,27 @@ public class Card : MonoBehaviour {
     {
         return GameControl.control.TypeIconsDatabase.GetTypeSprite(type);
     }
+
+    /// <summary>
+    /// Player selects the card in an attempt to summon
+    /// </summary>
+    public void OnSelect()
+    {
+        print("denigen onselect");
+        
+        if (position == Position.HAND)
+        {
+            if (data is DenigenData)
+            {
+                // check if there are enough tributes for this card to be summoned
+                var denData = (DenigenData)dataInstance;
+                if (!player.EnoughTributes(denData))
+                    return;
+
+                player.BeginSummon(this);
+            }
+        }
+    }
+
+
 }

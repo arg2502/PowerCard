@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Denigen : Card {
+public class Denigen : Card
+{
+   
 
-    
-	
 }

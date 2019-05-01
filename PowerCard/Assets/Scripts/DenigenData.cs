@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Denigen", menuName = "Cards/Denigen")]
 public class DenigenData : CardData
 {    
-    int stars;
+    public int Stars { get; set; }
     public enum Rarity { COMMON, UNCOMMON, RARE, JUDGE }
     Rarity rarity;
     public int Atk { get; set; }
@@ -77,7 +77,7 @@ public class DenigenData : CardData
             // 0 is key -- ignore
             // add name
             name = data[1];
-            stars = int.Parse(data[2]);
+            Stars = int.Parse(data[2]);
             Types = DecipherTypes(data[3]);
             Atk = int.Parse(data[4]);
             Sh = int.Parse(data[5]);

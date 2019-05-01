@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 33573123156933418}
   - component: {fileID: 65728172243954026}
   - component: {fileID: 23141666589255918}
+  - component: {fileID: 114863189870682718}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -828,6 +829,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114863189870682718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136265056535828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b006d002bfea6b4292243f5c7e78781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114879831528869106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1214,7 +1226,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 800}
+  m_SizeDelta: {x: 750, y: 980}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224317205935234716
 RectTransform:
