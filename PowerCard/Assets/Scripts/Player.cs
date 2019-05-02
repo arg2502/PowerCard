@@ -19,6 +19,10 @@ public class Player : MonoBehaviour {
     public Text tributeMessage;
     bool readyToSummon;
 
+    public GameObject handPos;
+    public GameObject fieldPos;
+    public List<CardSlot> denCardSlots;
+
     private void Start()
     {
         PopulateDeck();
@@ -76,7 +80,7 @@ public class Player : MonoBehaviour {
         }
         else
         {
-            cardObj = Instantiate(GameControl.control.CardPrefab, this.transform);
+            cardObj = Instantiate(GameControl.control.CardPrefab, handPos.transform);
         }
         var card = cardObj.GetComponent<Card>();
         card.Init(drawCard, this);
@@ -147,6 +151,7 @@ public class Player : MonoBehaviour {
         FromHandToField(cardToSummon, facedown);
 
         readyToSummon = false;
+        cardToSummon = null;
         tributedCards.Clear();
         tributeMessage.gameObject.SetActive(false);
     }
@@ -155,17 +160,7 @@ public class Player : MonoBehaviour {
     {
         hand.Remove(card);
         field.Add(card);
-        card.position = Card.Position.FIELD;
-        if (facedown)
-        {
-            card.face = Card.Face.FACEDOWN;
-            card.transform.Rotate(Vector3.up, 180f);
-        }
-        else
-            card.face = Card.Face.FACEUP;
-        
-        // temp
-        card.transform.position += Vector3.up * 2;
+        card.Summon(facedown);        
     }
 
     void DiscardFromHand(Card card)

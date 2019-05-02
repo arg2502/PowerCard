@@ -61,6 +61,30 @@ public class Card : MonoBehaviour {
         player = _player;
     }
 
+    public void Summon(bool facedown)
+    {
+        position = Card.Position.FIELD;
+        if (facedown)
+        {
+            face = Card.Face.FACEDOWN;
+            transform.Rotate(Vector3.up, 180f);
+        }
+        else
+            face = Card.Face.FACEUP;
+
+        // temp
+        transform.SetParent(player.fieldPos.transform);
+        //transform.position += Vector3.up * 2;
+        for(int i = 0; i < player.denCardSlots.Count; i++)
+        {
+            if(!player.denCardSlots[i].filled)
+            {
+                transform.position = player.denCardSlots[i].transform.position;
+                break;
+            }
+        }
+    }
+
     public void Discard()
     {
         data = null;
