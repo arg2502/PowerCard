@@ -14,20 +14,20 @@ public class PhysicalCard : MonoBehaviour {
     private void OnMouseOver()
     {
         //print("OVER");
-        GetComponent<MeshRenderer>().material.color = Color.yellow;
-        card.CurrentCard = true;
+        card.OnHover();
+        
     }
 
     private void OnMouseExit()
     {
         //print("EXIT");
-        GetComponent<MeshRenderer>().material.color = Color.white;
-        card.CurrentCard = false;
+        card.OnExit();
+        
     }
 
     private void OnMouseUpAsButton()
     {
-        print(card);
+        //print(card);
         card.OnSelect();
     }
 }

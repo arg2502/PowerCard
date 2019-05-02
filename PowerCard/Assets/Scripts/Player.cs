@@ -67,8 +67,18 @@ public class Player : MonoBehaviour {
         deck.RemoveAt(0);
 
         // create card based on carddata drawn
-        var c = Instantiate(GameControl.control.CardPrefab, this.transform);
-        var card = c.GetComponent<Card>();
+        GameObject cardObj;
+        if (GameControl.control.cardObjBank.Count > 0)
+        {
+            cardObj = GameControl.control.cardObjBank[0];
+            GameControl.control.cardObjBank.RemoveAt(0);
+            cardObj.SetActive(true);
+        }
+        else
+        {
+            cardObj = Instantiate(GameControl.control.CardPrefab, this.transform);
+        }
+        var card = cardObj.GetComponent<Card>();
         card.Init(drawCard, this);
 
         if (hand.Count > 0)
@@ -86,7 +96,29 @@ public class Player : MonoBehaviour {
         return denCount >= data.Stars - 1;
     }
 
-    public void BeginSummon(Card summon)
+    public void SelectInHand(Card card)
+    {
+        if (card.dataInstance is DenigenData)
+        {
+            // check if there are enough tributes for this card to be summoned
+            var denData = (DenigenData)card.dataInstance;
+            if (!EnoughTributes(denData))
+                return;
+
+            BeginSummon(card);
+        }
+    }
+
+    public void SelectOnField(Card card)
+    {
+        if(cardToSummon != null)
+        {
+            tributedCards.Add(card);
+            ConfirmSummon();
+        }
+    }
+
+    void BeginSummon(Card summon)
     {
         cardToSummon = summon;
         tributedCards = new List<Card>();
@@ -104,7 +136,7 @@ public class Player : MonoBehaviour {
         {
             tributeMessage.gameObject.SetActive(true);
             readyToSummon = true;
-            tributeMessage.text = "Up arrow = summon faceup -- Down Arrow = summon facedown";
+            tributeMessage.text = "Up arrow = summon faceup\nDown Arrow = summon facedown";
         }
     }
 
@@ -112,29 +144,42 @@ public class Player : MonoBehaviour {
     {
         foreach (var c in tributedCards)
             DiscardFromField(c);
-        FromHandToField(cardToSummon);
+        FromHandToField(cardToSummon, facedown);
 
         readyToSummon = false;
         tributedCards.Clear();
         tributeMessage.gameObject.SetActive(false);
     }
 
-    void FromHandToField(Card card)
+    void FromHandToField(Card card, bool facedown)
     {
         hand.Remove(card);
         field.Add(card);
+        card.position = Card.Position.FIELD;
+        if (facedown)
+        {
+            card.face = Card.Face.FACEDOWN;
+            card.transform.Rotate(Vector3.up, 180f);
+        }
+        else
+            card.face = Card.Face.FACEUP;
+        
+        // temp
+        card.transform.position += Vector3.up * 2;
     }
 
     void DiscardFromHand(Card card)
     {
         hand.Remove(card);
         discard.Add(card.data);
+        card.Discard();
     }
 
     void DiscardFromField(Card card)
     {
         field.Remove(card);
         discard.Add(card.data);
+        card.Discard();
     }
 
     private void Update()

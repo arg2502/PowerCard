@@ -27,13 +27,13 @@ public class Card : MonoBehaviour {
     {
         get
         {
-            var inst = data as DenigenData;
+            var inst = dataInstance as DenigenData;
             return inst.Stars;
         }
     }
 
     public CardData data;
-    CardData dataInstance;
+    public CardData dataInstance;
 
     float yRotate = -2;
 
@@ -41,6 +41,12 @@ public class Card : MonoBehaviour {
 
     public enum Position { HAND, FIELD }
     public Position position;
+    public enum Face { FACEUP, FACEDOWN }
+    public Face face;
+
+    Color hoverColor = Color.yellow;
+    Color inactiveHoverColor = Color.gray;
+    Color normalColor = Color.white;
 
     public void Init(CardData _data, Player _player)
     {
@@ -53,6 +59,14 @@ public class Card : MonoBehaviour {
         AssignUI();
 
         player = _player;
+    }
+
+    public void Discard()
+    {
+        data = null;
+        dataInstance = null;
+        GameControl.control.cardObjBank.Add(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     void AssignUI()
@@ -95,26 +109,40 @@ public class Card : MonoBehaviour {
     {
         return GameControl.control.TypeIconsDatabase.GetTypeSprite(type);
     }
-
-    /// <summary>
-    /// Player selects the card in an attempt to summon
-    /// </summary>
+    
     public void OnSelect()
     {
         print("denigen onselect");
         
         if (position == Position.HAND)
         {
-            if (data is DenigenData)
-            {
-                // check if there are enough tributes for this card to be summoned
-                var denData = (DenigenData)dataInstance;
-                if (!player.EnoughTributes(denData))
-                    return;
-
-                player.BeginSummon(this);
-            }
+            player.SelectInHand(this);            
         }
+        else if(position == Position.FIELD)
+        {
+            player.SelectOnField(this);
+        }
+    }
+
+    public void OnHover()
+    {
+        if (data is DenigenData)
+        {
+            var denData = dataInstance as DenigenData;
+            if (player.EnoughTributes(denData))
+                GetComponentInChildren<MeshRenderer>().material.color = hoverColor;
+            else
+                GetComponentInChildren<MeshRenderer>().material.color = inactiveHoverColor;
+        }
+        else
+            GetComponentInChildren<MeshRenderer>().material.color = hoverColor;
+        CurrentCard = true;
+    }
+
+    public void OnExit()
+    {
+        GetComponentInChildren<MeshRenderer>().material.color = normalColor;
+        CurrentCard = false;
     }
 
 

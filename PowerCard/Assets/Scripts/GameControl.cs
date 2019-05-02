@@ -17,6 +17,7 @@ public class GameControl : MonoBehaviour {
     public Dictionary<string, string[]> powermagicKeys;
 
     public GameObject CardPrefab;
+    public List<GameObject> cardObjBank;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class GameControl : MonoBehaviour {
             control = this;
             CardManager = new CardManager();
             TypeIconsDatabase = Resources.Load<TypeIconsDatabase>("TypeIconsDatabase");
+            cardObjBank = new List<GameObject>();
         }
         else
             Destroy(this);
