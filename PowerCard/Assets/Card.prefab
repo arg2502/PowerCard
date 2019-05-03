@@ -384,7 +384,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1929265912806096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10.02}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224029983844661052}
@@ -601,6 +601,10 @@ MonoBehaviour:
   weakness2Image: {fileID: 114520782175483804}
   weakness3Image: {fileID: 114855196780925632}
   weakness4Image: {fileID: 114444568154829390}
+  data: {fileID: 0}
+  dataInstance: {fileID: 0}
+  position: 0
+  face: 0
 --- !u!114 &114343413596722300
 MonoBehaviour:
   m_ObjectHideFlags: 1

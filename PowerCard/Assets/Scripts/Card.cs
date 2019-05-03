@@ -80,6 +80,7 @@ public class Card : MonoBehaviour {
             if(!player.denCardSlots[i].filled)
             {
                 transform.position = player.denCardSlots[i].transform.position;
+                player.denCardSlots[i].filled = true;
                 break;
             }
         }
