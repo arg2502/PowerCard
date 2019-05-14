@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour {
 
-    protected Player player;
+    public Player player;
 
     public Image portraitImage;
     public Text nameText;
@@ -48,6 +48,8 @@ public class Card : MonoBehaviour {
     Color inactiveHoverColor = Color.gray;
     Color normalColor = Color.white;
 
+    CardSlot fieldSlot;
+
     public void Init(CardData _data, Player _player)
     {
         data = _data;
@@ -72,26 +74,60 @@ public class Card : MonoBehaviour {
         else
             face = Card.Face.FACEUP;
 
-        // temp
-        transform.SetParent(player.fieldPos.transform);
-        //transform.position += Vector3.up * 2;
+        bool enoughSlots = false;
         for(int i = 0; i < player.denCardSlots.Count; i++)
         {
             if(!player.denCardSlots[i].filled)
             {
-                transform.position = player.denCardSlots[i].transform.position;
-                player.denCardSlots[i].filled = true;
+                AssignSlot(player.denCardSlots[i]);
+                enoughSlots = true;
                 break;
             }
         }
+        if (!enoughSlots)
+            Debug.LogError("Not enough slots");
+
+        player.hand.Remove(this);
+        player.field.Add(this);
+        player.cardHandleState = Player.CardHandleState.NORMAL;
     }
 
-    public void Discard()
+    public void Discard(bool fromHand = false)
     {
+        FreeSlot();
         data = null;
         dataInstance = null;
         GameControl.control.cardObjBank.Add(this.gameObject);
+
+        player.discard.Add(data);
+        if (fromHand)
+            player.hand.Remove(this);
+        else
+            player.field.Remove(this);
+
         this.gameObject.SetActive(false);
+    }
+
+    public void Destroy(int damage = 0)
+    {
+        Discard();
+        if (damage > 0)
+            player.LosePoints(damage);
+                
+    }
+
+    void AssignSlot(CardSlot newSlot)
+    {
+        fieldSlot = newSlot;
+        transform.position = fieldSlot.transform.position;
+        transform.SetParent(fieldSlot.transform);
+        fieldSlot.filled = true;
+    }
+
+    void FreeSlot()
+    {
+        fieldSlot.filled = false;
+        fieldSlot = null;
     }
 
     void AssignUI()
@@ -138,15 +174,15 @@ public class Card : MonoBehaviour {
     public void OnSelect()
     {
         print("denigen onselect");
-        
-        if (position == Position.HAND)
-        {
-            player.SelectInHand(this);            
-        }
-        else if(position == Position.FIELD)
-        {
-            player.SelectOnField(this);
-        }
+        GameControl.control.OnCardClicked(this);
+        //if (position == Position.HAND)
+        //{
+        //    player.SelectInHand(this);            
+        //}
+        //else if(position == Position.FIELD)
+        //{
+        //    player.SelectOnField(this);
+        //}
     }
 
     public void OnHover()

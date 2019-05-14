@@ -20,7 +20,20 @@ public class DenigenData : CardData
     public List<Type> Types { get; set; }
     public List<Type> Weaknesses { get; set; }
     public List<Type> Resistances { get; set; }
-
+    public int Str {
+        get
+        {
+            switch (Stars)
+            {
+                case 1: return 5;
+                case 2: return 7;
+                case 3: return 9;
+                case 4: return 12;
+                case 5: return 15;
+                default: return 0;
+            }
+        }
+    }
 
     Dictionary<Type, List<Type>> TypeWeaknesses = new Dictionary<Type, List<Type>>()
     {

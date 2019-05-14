@@ -18,6 +18,10 @@ public class GameControl : MonoBehaviour {
 
     public GameObject CardPrefab;
     public List<GameObject> cardObjBank;
+    public List<Player> playerList;
+
+    int currentPlayerNum = 0;
+    public Player CurrentPlayer { get { return playerList[currentPlayerNum]; } }
 
     private void Awake()
     {
@@ -35,6 +39,7 @@ public class GameControl : MonoBehaviour {
     private void Start()
     {
         DecipherSpreadsheets();
+        StartGame();
     }
 
     void DecipherSpreadsheets()
@@ -61,6 +66,44 @@ public class GameControl : MonoBehaviour {
 
             // set the first column (the key) as the key of the dictionary, and the entire row as the value
             powermagicKeys.Add(powermagicData[0], powermagicData);
+        }
+    }
+
+    void StartGame()
+    {
+        foreach (var p in playerList)
+            p.turnState = Player.TurnState.STANDBY;
+        currentPlayerNum = 0;
+        CurrentPlayer.turnState = Player.TurnState.DRAW;
+    }
+
+    public void NextTurn()
+    {
+        currentPlayerNum++;
+        if (currentPlayerNum >= playerList.Count)
+            currentPlayerNum = 0;
+        CurrentPlayer.turnState = Player.TurnState.DRAW;
+    }
+
+    public void CheckForWinner()
+    {
+        var remainingPlayers = playerList.FindAll(p => p.powerpoints > 0);
+        if(remainingPlayers.Count == 1)
+        {
+            print("GAME OVER");
+            print(remainingPlayers[0].name + " wins!");
+        }
+    }
+
+    public void OnCardClicked(Card card)
+    {
+        if (card.position == Card.Position.HAND)
+        {
+            CurrentPlayer.SelectInHand(card);
+        }
+        else if (card.position == Card.Position.FIELD)
+        {
+            CurrentPlayer.SelectOnField(card);
         }
     }
 }

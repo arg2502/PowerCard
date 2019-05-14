@@ -22,9 +22,22 @@ public class Player : MonoBehaviour {
     public GameObject handPos;
     public GameObject fieldPos;
     public List<CardSlot> denCardSlots;
+    float drawDistance = 1.75f;
+
+    public enum TurnState { STANDBY, DRAW, SUMMON, ATTACK, POST, OUTOFGAME }
+    public TurnState turnState;
+
+    public enum CardHandleState { NORMAL, TRIBUTE, TARGET }
+    public CardHandleState cardHandleState;
+
+    public Card currentAttacker;
+    public Card currentTarget;
+
+    public int powerpoints;
 
     private void Start()
     {
+        powerpoints = 100;
         PopulateDeck();
         ShuffleDeck();
         //PrintDeck();
@@ -59,7 +72,15 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void Draw()
+    public void DrawStartTurn()
+    {
+        if (turnState != TurnState.DRAW)
+            return;
+        Draw();
+        turnState = TurnState.SUMMON;
+    }
+
+    void Draw()
     {
         if(deck.Count <= 0)
         {
@@ -76,6 +97,8 @@ public class Player : MonoBehaviour {
         {
             cardObj = GameControl.control.cardObjBank[0];
             GameControl.control.cardObjBank.RemoveAt(0);
+            cardObj.transform.SetParent(handPos.transform);
+            cardObj.transform.position = handPos.transform.position;
             cardObj.SetActive(true);
         }
         else
@@ -88,7 +111,7 @@ public class Player : MonoBehaviour {
         if (hand.Count > 0)
         {
             card.transform.position = hand[hand.Count - 1].transform.position;
-            card.transform.position += new Vector3(.75f, 0, 0);
+            card.transform.position += new Vector3(drawDistance, 0, 0);
         }
             
         hand.Add(card);        
@@ -109,27 +132,41 @@ public class Player : MonoBehaviour {
             if (!EnoughTributes(denData))
                 return;
 
-            BeginSummon(card);
+            BeginNormalSummon(card);
         }
     }
 
     public void SelectOnField(Card card)
     {
-        if(cardToSummon != null)
+        if(cardHandleState == CardHandleState.NORMAL)
         {
-            tributedCards.Add(card);
-            ConfirmSummon();
+            BeginTarget(card);
+        }
+        else if(cardHandleState == CardHandleState.TRIBUTE)
+        {
+            if (!tributedCards.Contains(card))
+            {
+                tributedCards.Add(card);
+                ConfirmNormalSummon();
+            }
+        }
+        else if (cardHandleState == CardHandleState.TARGET)
+        {
+            // check that we're not targeting ourselves
+            if (card.player != this)
+                BeginAttack(card);
         }
     }
 
-    void BeginSummon(Card summon)
+    void BeginNormalSummon(Card summon)
     {
+        cardHandleState = CardHandleState.TRIBUTE;
         cardToSummon = summon;
         tributedCards = new List<Card>();
-        ConfirmSummon();
+        ConfirmNormalSummon();
     }
 
-    public void ConfirmSummon()
+    public void ConfirmNormalSummon()
     {
         if(tributedCards.Count < cardToSummon.Stars-1)
         {
@@ -147,37 +184,163 @@ public class Player : MonoBehaviour {
     void Summon(bool facedown)
     {
         foreach (var c in tributedCards)
-            DiscardFromField(c);
-        FromHandToField(cardToSummon, facedown);
+            //DiscardFromField(c);
+            c.Discard();
+        //FromHandToField(cardToSummon, facedown);
+        cardToSummon.Summon(facedown);
 
         readyToSummon = false;
         cardToSummon = null;
         tributedCards.Clear();
         tributeMessage.gameObject.SetActive(false);
     }
-
-    void FromHandToField(Card card, bool facedown)
+    
+    void BeginTarget(Card card)
     {
-        hand.Remove(card);
-        field.Add(card);
-        card.Summon(facedown);        
+        //// ANOTHER PLAYER SELECTS YOUR CARD
+        //Player attacker = null;        
+        //if (OpponentIsTargeting(ref attacker))
+        //{
+        //    attacker.BeginAttack(card);
+        //}
+
+        // WHEN YOU SELECT YOUR OWN CARD
+        if (OpponentTargetsExist())
+        {
+            currentAttacker = card;
+            cardHandleState = CardHandleState.TARGET;
+            tributeMessage.text = "Select target";
+            tributeMessage.gameObject.SetActive(true);
+        }
     }
 
-    void DiscardFromHand(Card card)
+    bool OpponentTargetsExist()
     {
-        hand.Remove(card);
-        discard.Add(card.data);
-        card.Discard();
+        foreach(var p in GameControl.control.playerList)
+        {
+            if (p == this) continue;
+
+            if (p.field.Count > 0) return true;
+        }
+        return false;
     }
 
-    void DiscardFromField(Card card)
+    //bool OpponentIsTargeting(ref Player attacker)
+    //{
+    //    foreach (var p in GameControl.control.playerList)
+    //    {
+    //        if (p == this) continue;
+
+    //        if (p.cardHandleState == CardHandleState.TARGET)
+    //        {
+    //            attacker = p;
+    //            return true;
+    //        }
+    //    }
+    //    return false;
+    //}
+
+    public void BeginAttack(Card target)
     {
-        field.Remove(card);
-        discard.Add(card.data);
-        card.Discard();
+        cardHandleState = CardHandleState.NORMAL;
+        currentTarget = target;
+
+        //print(currentAttacker.dataInstance.name + " attacks " + currentTarget.dataInstance.name);
+        var denAttacker = currentAttacker.dataInstance as DenigenData;
+        var denTarget = currentTarget.dataInstance as DenigenData;
+
+        int atk = 0, sh = 0;
+        GetTypeStats(denAttacker, denTarget, ref atk, ref sh);
+        var diff = atk - sh;
+
+        // if atk is greater, then discard target and player loses pp
+        if(diff > 0)
+        {
+            //print(denTarget.name + " defeated.");
+            currentTarget.Destroy();
+            currentTarget = null;
+            currentAttacker = null;
+            tributeMessage.gameObject.SetActive(false);
+        }
+        else
+        {
+            currentTarget = null;
+            currentAttacker = null;
+            tributeMessage.text = "not stronk enough";
+        }
+    }
+
+    void GetTypeStats(DenigenData attacker, DenigenData target, ref int atk, ref int sh)
+    {
+        atk = attacker.Atk;
+        sh = target.Sh;
+                
+        foreach (var t in attacker.Types)
+        {
+            // if target is weak, increase attacker's ATK by attacker's STR
+            if (target.Weaknesses.Contains(t))
+            {
+                atk += attacker.Str;
+                return;
+            }
+            // if target is resistant, increase target's SH by target's STR
+            else if(target.Resistances.Contains(t))
+            {
+                sh += target.Str;
+                return;
+            }
+        }
+    }
+
+    public void LosePoints(int points)
+    {
+        powerpoints = Mathf.Max(powerpoints - points, 0);
+
+        if(powerpoints == 0)
+        {
+            GameControl.control.CheckForWinner();
+        }
+    }
+
+    public void EndTurn()
+    {
+        cardHandleState = CardHandleState.NORMAL;
+        turnState = TurnState.STANDBY;
+        GameControl.control.NextTurn();
     }
 
     private void Update()
+    {
+        if (turnState == TurnState.DRAW)
+        {
+            UpdateDraw();
+        }
+        else if (turnState == TurnState.SUMMON)
+        {
+            UpdateSummon();
+        }
+        else if (turnState == TurnState.ATTACK)
+        {
+            UpdateAttack();
+        }
+        else if (turnState == TurnState.POST)
+        {
+            UpdatePost();
+        }
+        else if(turnState == TurnState.STANDBY)
+        {
+            UpdateStandby();
+        }
+        else if (turnState == TurnState.OUTOFGAME)
+        {
+            UpdateOutOfGame();
+        }
+
+        
+    }
+
+    void UpdateDraw() { }
+    void UpdateSummon()
     {
         if (readyToSummon)
         {
@@ -191,4 +354,8 @@ public class Player : MonoBehaviour {
             }
         }
     }
+    void UpdateAttack() { }
+    void UpdatePost() { }
+    void UpdateStandby() { }
+    void UpdateOutOfGame() { }
 }
