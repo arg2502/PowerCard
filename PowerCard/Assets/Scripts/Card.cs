@@ -43,6 +43,7 @@ public class Card : MonoBehaviour {
     public Position position;
     public enum Face { FACEUP, FACEDOWN }
     public Face face;
+    public bool hasAttacked { get; set; }
 
     Color hoverColor = Color.yellow;
     Color inactiveHoverColor = Color.gray;

@@ -17,7 +17,7 @@ public class Player : MonoBehaviour {
     Card cardToSummon;
     List<Card> tributedCards;
     public Text tributeMessage;
-    bool readyToSummon;
+    bool readyToNormalSummon;
 
     public GameObject handPos;
     public GameObject fieldPos;
@@ -35,12 +35,48 @@ public class Player : MonoBehaviour {
 
     public int powerpoints;
 
+    int normalSummonsPerformed = 0;
+    int maxNormalSummons = 1;
+
+    [Header("UI")]
+    public Text turnStateUI;
+    public Text cardHandleStateUI;
+    public Text normalSummonsUI;
+
     private void Start()
     {
         powerpoints = 100;
         PopulateDeck();
         ShuffleDeck();
         //PrintDeck();
+    }
+
+    public void SetTurnState(TurnState newState)
+    {
+        if (turnState == newState) return;
+
+        turnState = newState;
+        switch (turnState)
+        {
+            case TurnState.DRAW:
+                break;
+            case TurnState.SUMMON:
+                normalSummonsPerformed = 0;
+                break;
+            case TurnState.ATTACK:
+                break;
+            case TurnState.POST:
+                break;
+            case TurnState.OUTOFGAME:
+                break;
+            case TurnState.STANDBY:
+                // at end of turn, set any field cards hasAttacked flag to false
+                foreach(var c in field)
+                {
+                    c.hasAttacked = false;
+                }
+                break;
+        }        
     }
 
     void PopulateDeck()
@@ -72,12 +108,20 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void DrawStartGame()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            Draw();
+        }
+    }
+
     public void DrawStartTurn()
     {
         if (turnState != TurnState.DRAW)
             return;
         Draw();
-        turnState = TurnState.SUMMON;
+        SetTurnState(TurnState.SUMMON);
     }
 
     void Draw()
@@ -123,16 +167,30 @@ public class Player : MonoBehaviour {
         return denCount >= data.Stars - 1;
     }
 
+    bool IsCardMine(Card card)
+    {
+        return card.player == this;
+    }
+
     public void SelectInHand(Card card)
     {
+        if (!IsCardMine(card)) return; // for now, just return if the card is not yours
         if (card.dataInstance is DenigenData)
         {
-            // check if there are enough tributes for this card to be summoned
-            var denData = (DenigenData)card.dataInstance;
-            if (!EnoughTributes(denData))
-                return;
+            // check if we are in summoning phase
+            if (turnState == TurnState.SUMMON)
+            {
+                // check if we are allowed to normal summon
+                if (normalSummonsPerformed < maxNormalSummons)
+                {
+                    // check if there are enough tributes for this card to be summoned
+                    var denData = (DenigenData)card.dataInstance;
+                    if (!EnoughTributes(denData))
+                        return;
 
-            BeginNormalSummon(card);
+                    BeginNormalSummon(card);
+                }
+            }
         }
     }
 
@@ -140,7 +198,8 @@ public class Player : MonoBehaviour {
     {
         if(cardHandleState == CardHandleState.NORMAL)
         {
-            BeginTarget(card);
+            if (IsCardMine(card))
+                BeginTarget(card);
         }
         else if(cardHandleState == CardHandleState.TRIBUTE)
         {
@@ -176,7 +235,7 @@ public class Player : MonoBehaviour {
         else
         {
             tributeMessage.gameObject.SetActive(true);
-            readyToSummon = true;
+            readyToNormalSummon = true;
             tributeMessage.text = "Up arrow = summon faceup\nDown Arrow = summon facedown";
         }
     }
@@ -189,7 +248,11 @@ public class Player : MonoBehaviour {
         //FromHandToField(cardToSummon, facedown);
         cardToSummon.Summon(facedown);
 
-        readyToSummon = false;
+        if (readyToNormalSummon)
+        {
+            readyToNormalSummon = false;
+            normalSummonsPerformed++;
+        }
         cardToSummon = null;
         tributedCards.Clear();
         tributeMessage.gameObject.SetActive(false);
@@ -205,7 +268,7 @@ public class Player : MonoBehaviour {
         //}
 
         // WHEN YOU SELECT YOUR OWN CARD
-        if (OpponentTargetsExist())
+        if (OpponentTargetsExist() && !card.hasAttacked)
         {
             currentAttacker = card;
             cardHandleState = CardHandleState.TARGET;
@@ -242,6 +305,7 @@ public class Player : MonoBehaviour {
 
     public void BeginAttack(Card target)
     {
+        SetTurnState(TurnState.ATTACK);
         cardHandleState = CardHandleState.NORMAL;
         currentTarget = target;
 
@@ -258,16 +322,32 @@ public class Player : MonoBehaviour {
         {
             //print(denTarget.name + " defeated.");
             currentTarget.Destroy();
-            currentTarget = null;
-            currentAttacker = null;
             tributeMessage.gameObject.SetActive(false);
         }
         else
         {
-            currentTarget = null;
-            currentAttacker = null;
             tributeMessage.text = "not stronk enough";
         }
+
+        // after attack
+        currentAttacker.hasAttacked = true;
+
+        currentTarget = null;
+        currentAttacker = null;
+
+        // check if we go to POST
+        bool canStillAttack = false;
+        foreach(var c in field)
+        {
+            if (!c.hasAttacked)
+            {
+                canStillAttack = true;
+                break;
+            }
+        }
+        if (!canStillAttack)
+            SetTurnState(TurnState.POST);
+
     }
 
     void GetTypeStats(DenigenData attacker, DenigenData target, ref int atk, ref int sh)
@@ -336,13 +416,15 @@ public class Player : MonoBehaviour {
             UpdateOutOfGame();
         }
 
-        
+        turnStateUI.text = turnState.ToString();
+        cardHandleStateUI.text = cardHandleState.ToString();
+        normalSummonsUI.text = normalSummonsPerformed.ToString();
     }
 
     void UpdateDraw() { }
     void UpdateSummon()
     {
-        if (readyToSummon)
+        if (readyToNormalSummon)
         {
             if (Input.GetKeyUp(KeyCode.UpArrow))
             {

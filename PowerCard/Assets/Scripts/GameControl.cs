@@ -39,7 +39,7 @@ public class GameControl : MonoBehaviour {
     private void Start()
     {
         DecipherSpreadsheets();
-        StartGame();
+        //StartGame();
     }
 
     void DecipherSpreadsheets()
@@ -69,12 +69,15 @@ public class GameControl : MonoBehaviour {
         }
     }
 
-    void StartGame()
+    public void StartGame()
     {
         foreach (var p in playerList)
-            p.turnState = Player.TurnState.STANDBY;
+        {
+            p.DrawStartGame();
+            p.SetTurnState(Player.TurnState.STANDBY);
+        }
         currentPlayerNum = 0;
-        CurrentPlayer.turnState = Player.TurnState.DRAW;
+        CurrentPlayer.SetTurnState(Player.TurnState.DRAW);
     }
 
     public void NextTurn()
@@ -82,7 +85,7 @@ public class GameControl : MonoBehaviour {
         currentPlayerNum++;
         if (currentPlayerNum >= playerList.Count)
             currentPlayerNum = 0;
-        CurrentPlayer.turnState = Player.TurnState.DRAW;
+        CurrentPlayer.SetTurnState(Player.TurnState.DRAW);
     }
 
     public void CheckForWinner()
