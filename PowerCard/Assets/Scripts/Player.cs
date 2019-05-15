@@ -73,8 +73,14 @@ public class Player : MonoBehaviour {
                 // at end of turn, set any field cards hasAttacked flag to false
                 foreach(var c in field)
                 {
-                    c.hasAttacked = false;
+                    c.hasAttacked = false;                    
                 }
+                tributedCards.Clear();
+                cardHandleState = CardHandleState.NORMAL;
+                currentAttacker = null;
+                currentTarget = null;
+                cardToSummon = null;
+                readyToNormalSummon = false;
                 break;
         }        
     }
