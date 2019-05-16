@@ -42,6 +42,7 @@ public class Player : MonoBehaviour {
     public Text turnStateUI;
     public Text cardHandleStateUI;
     public Text normalSummonsUI;
+    public Text powerpointsUI;
 
     private void Start()
     {
@@ -310,10 +311,15 @@ public class Player : MonoBehaviour {
     //}
 
     public void BeginAttack(Card target)
-    {
+    {        
         SetTurnState(TurnState.ATTACK);
         cardHandleState = CardHandleState.NORMAL;
         currentTarget = target;
+
+        if (currentAttacker.face == Card.Face.FACEDOWN)
+            currentAttacker.FlipCard();
+        if (currentTarget.face == Card.Face.FACEDOWN)
+            currentTarget.FlipCard();
 
         //print(currentAttacker.dataInstance.name + " attacks " + currentTarget.dataInstance.name);
         var denAttacker = currentAttacker.dataInstance as DenigenData;
@@ -327,11 +333,13 @@ public class Player : MonoBehaviour {
         if(diff > 0)
         {
             //print(denTarget.name + " defeated.");
+            currentTarget.player.LosePoints(Mathf.Abs(diff));
             currentTarget.Destroy();
-            tributeMessage.gameObject.SetActive(false);
+            tributeMessage.gameObject.SetActive(false);            
         }
         else
         {
+            currentAttacker.player.LosePoints(Mathf.Abs(diff));
             tributeMessage.text = "not stronk enough";
         }
 
@@ -390,8 +398,9 @@ public class Player : MonoBehaviour {
 
     public void EndTurn()
     {
+        if (GameControl.control.CurrentPlayer != this) return;       
         cardHandleState = CardHandleState.NORMAL;
-        turnState = TurnState.STANDBY;
+        SetTurnState(TurnState.STANDBY);
         GameControl.control.NextTurn();
     }
 
@@ -425,6 +434,7 @@ public class Player : MonoBehaviour {
         turnStateUI.text = turnState.ToString();
         cardHandleStateUI.text = cardHandleState.ToString();
         normalSummonsUI.text = normalSummonsPerformed.ToString();
+        powerpointsUI.text = powerpoints.ToString();
     }
 
     void UpdateDraw() { }

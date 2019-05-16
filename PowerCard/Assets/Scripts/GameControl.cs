@@ -73,6 +73,7 @@ public class GameControl : MonoBehaviour {
     {
         foreach (var p in playerList)
         {
+            p.powerpoints = 100;
             p.DrawStartGame();
             p.SetTurnState(Player.TurnState.STANDBY);
         }

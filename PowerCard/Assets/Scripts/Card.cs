@@ -55,7 +55,9 @@ public class Card : MonoBehaviour {
     {
         data = _data;
         dataInstance = Instantiate(data);
-
+        hasAttacked = false;
+        position = Position.HAND;
+        face = Face.FACEUP;
         transform.rotation = Quaternion.Euler(0, yRotate, 0);
             
         dataInstance.Init();
@@ -70,7 +72,7 @@ public class Card : MonoBehaviour {
         if (facedown)
         {
             face = Card.Face.FACEDOWN;
-            transform.Rotate(Vector3.up, 180f);
+            FlipCard();
         }
         else
             face = Card.Face.FACEUP;
@@ -95,7 +97,7 @@ public class Card : MonoBehaviour {
 
     public void Discard(bool fromHand = false)
     {
-        FreeSlot();
+        FreeSlot();        
         data = null;
         dataInstance = null;
         GameControl.control.cardObjBank.Add(this.gameObject);
@@ -172,6 +174,11 @@ public class Card : MonoBehaviour {
         return GameControl.control.TypeIconsDatabase.GetTypeSprite(type);
     }
     
+    public void FlipCard()
+    {
+        transform.Rotate(Vector3.up, 180f);
+    }
+
     public void OnSelect()
     {
         print("denigen onselect");
