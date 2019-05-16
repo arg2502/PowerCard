@@ -5,29 +5,8 @@ using UnityEngine;
 public class PhysicalCard : MonoBehaviour {
         
     Card card;
-
-    private void Start()
-    {
-        card = GetComponentInParent<Card>();
-    }
-
-    private void OnMouseOver()
-    {
-        //print("OVER");
-        card.OnHover();
-        
-    }
-
-    private void OnMouseExit()
-    {
-        //print("EXIT");
-        card.OnExit();
-        
-    }
-
-    private void OnMouseUpAsButton()
-    {
-        //print(card);
-        card.OnSelect();
-    }
+    private void Start() { card = GetComponentInParent<Card>(); }
+    private void OnMouseOver() { card.OnHover(); }
+    private void OnMouseExit() { card.OnExit(); }
+    private void OnMouseUpAsButton() { card.OnSelect(); }
 }

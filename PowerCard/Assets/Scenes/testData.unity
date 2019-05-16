@@ -1555,6 +1555,7 @@ MonoBehaviour:
   playerList:
   - {fileID: 284711511}
   - {fileID: 1651364986}
+  tributeMessage: {fileID: 1593878017}
 --- !u!4 &1294359674
 Transform:
   m_ObjectHideFlags: 0

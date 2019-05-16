@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour {
 
@@ -22,6 +23,8 @@ public class GameControl : MonoBehaviour {
 
     int currentPlayerNum = 0;
     public Player CurrentPlayer { get { return playerList[currentPlayerNum]; } }
+    
+    public Text tributeMessage;
 
     private void Awake()
     {

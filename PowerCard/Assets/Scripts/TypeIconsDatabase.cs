@@ -29,7 +29,7 @@ public class TypeIconsDatabase : ScriptableObject {
             case DenigenData.Type.PSYCHIC: return PSYCHIC;
             case DenigenData.Type.ASCENDANT: return ASCENDANT;
             case DenigenData.Type.SEEKER: return SEEKER;
-            default: Debug.LogError("Type Icon not found."); return null;
+            default: Debug.LogError("Type Icon not found?"); return null;
         }
     }
 

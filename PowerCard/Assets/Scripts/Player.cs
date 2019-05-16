@@ -16,7 +16,6 @@ public class Player : MonoBehaviour {
     // summon one card at a time
     Card cardToSummon;
     List<Card> tributedCards;
-    public Text tributeMessage;
     bool readyToNormalSummon;
 
     public GameObject handPos;
@@ -41,15 +40,20 @@ public class Player : MonoBehaviour {
     [Header("UI")]
     public Text turnStateUI;
     public Text cardHandleStateUI;
-    public Text normalSummonsUI;
     public Text powerpointsUI;
 
+    bool IsCardMine(Card card) { return card.player == this; }
+    public bool EnoughTributes(DenigenData data)
+    {
+        var denCount = field.FindAll((c) => c.data is DenigenData).Count;
+        return denCount >= data.Stars - 1;
+    }
+    
     private void Start()
     {
         powerpoints = 100;
         PopulateDeck();
         ShuffleDeck();
-        //PrintDeck();
     }
 
     public void SetTurnState(TurnState newState)
@@ -86,98 +90,6 @@ public class Player : MonoBehaviour {
         }        
     }
 
-    void PopulateDeck()
-    {
-        deck = new List<CardData>();
-        foreach(var s in deckStr)
-        {
-            var cd = GameControl.CardManager.cardDatabase.Find(s);
-            deck.Add(cd);
-        }
-    }
-
-    void ShuffleDeck()
-    {
-        for(int i = 0; i < deck.Count; i++)
-        {
-            var temp = deck[i];
-            int randomIndex = Random.Range(i, deck.Count);
-            deck[i] = deck[randomIndex];
-            deck[randomIndex] = temp;
-        }
-    }
-
-    void PrintDeck()
-    {
-        foreach(var c in deck)
-        {
-            print(c.name);
-        }
-    }
-
-    public void DrawStartGame()
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            Draw();
-        }
-    }
-
-    public void DrawStartTurn()
-    {
-        if (turnState != TurnState.DRAW)
-            return;
-        Draw();
-        SetTurnState(TurnState.SUMMON);
-    }
-
-    void Draw()
-    {
-        if(deck.Count <= 0)
-        {
-            Debug.LogWarning("Deck is empty");
-            return;
-        }
-        // remove card from deck
-        var drawCard = deck[0];
-        deck.RemoveAt(0);
-
-        // create card based on carddata drawn
-        GameObject cardObj;
-        if (GameControl.control.cardObjBank.Count > 0)
-        {
-            cardObj = GameControl.control.cardObjBank[0];
-            GameControl.control.cardObjBank.RemoveAt(0);
-            cardObj.transform.SetParent(handPos.transform);
-            cardObj.transform.position = handPos.transform.position;
-            cardObj.SetActive(true);
-        }
-        else
-        {
-            cardObj = Instantiate(GameControl.control.CardPrefab, handPos.transform);
-        }
-        var card = cardObj.GetComponent<Card>();
-        card.Init(drawCard, this);
-
-        if (hand.Count > 0)
-        {
-            card.transform.position = hand[hand.Count - 1].transform.position;
-            card.transform.position += new Vector3(drawDistance, 0, 0);
-        }
-            
-        hand.Add(card);        
-    }
-    
-    public bool EnoughTributes(DenigenData data)
-    {
-        var denCount = field.FindAll((c) => c.data is DenigenData).Count;
-        return denCount >= data.Stars - 1;
-    }
-
-    bool IsCardMine(Card card)
-    {
-        return card.player == this;
-    }
 
     public void SelectInHand(Card card)
     {
@@ -224,145 +136,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void BeginNormalSummon(Card summon)
-    {
-        cardHandleState = CardHandleState.TRIBUTE;
-        cardToSummon = summon;
-        tributedCards = new List<Card>();
-        ConfirmNormalSummon();
-    }
-
-    public void ConfirmNormalSummon()
-    {
-        if(tributedCards.Count < cardToSummon.Stars-1)
-        {
-            tributeMessage.gameObject.SetActive(true);
-            tributeMessage.text = "Select cards for tribute.";
-        }
-        else
-        {
-            tributeMessage.gameObject.SetActive(true);
-            readyToNormalSummon = true;
-            tributeMessage.text = "Up arrow = summon faceup\nDown Arrow = summon facedown";
-        }
-    }
-
-    void Summon(bool facedown)
-    {
-        foreach (var c in tributedCards)
-            //DiscardFromField(c);
-            c.Discard();
-        //FromHandToField(cardToSummon, facedown);
-        cardToSummon.Summon(facedown);
-
-        if (readyToNormalSummon)
-        {
-            readyToNormalSummon = false;
-            normalSummonsPerformed++;
-        }
-        cardToSummon = null;
-        tributedCards.Clear();
-        tributeMessage.gameObject.SetActive(false);
-    }
-    
-    void BeginTarget(Card card)
-    {
-        //// ANOTHER PLAYER SELECTS YOUR CARD
-        //Player attacker = null;        
-        //if (OpponentIsTargeting(ref attacker))
-        //{
-        //    attacker.BeginAttack(card);
-        //}
-
-        // WHEN YOU SELECT YOUR OWN CARD
-        if (OpponentTargetsExist() && !card.hasAttacked)
-        {
-            currentAttacker = card;
-            cardHandleState = CardHandleState.TARGET;
-            tributeMessage.text = "Select target";
-            tributeMessage.gameObject.SetActive(true);
-        }
-    }
-
-    bool OpponentTargetsExist()
-    {
-        foreach(var p in GameControl.control.playerList)
-        {
-            if (p == this) continue;
-
-            if (p.field.Count > 0) return true;
-        }
-        return false;
-    }
-
-    //bool OpponentIsTargeting(ref Player attacker)
-    //{
-    //    foreach (var p in GameControl.control.playerList)
-    //    {
-    //        if (p == this) continue;
-
-    //        if (p.cardHandleState == CardHandleState.TARGET)
-    //        {
-    //            attacker = p;
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
-
-    public void BeginAttack(Card target)
-    {        
-        SetTurnState(TurnState.ATTACK);
-        cardHandleState = CardHandleState.NORMAL;
-        currentTarget = target;
-
-        if (currentAttacker.face == Card.Face.FACEDOWN)
-            currentAttacker.FlipCard();
-        if (currentTarget.face == Card.Face.FACEDOWN)
-            currentTarget.FlipCard();
-
-        //print(currentAttacker.dataInstance.name + " attacks " + currentTarget.dataInstance.name);
-        var denAttacker = currentAttacker.dataInstance as DenigenData;
-        var denTarget = currentTarget.dataInstance as DenigenData;
-
-        int atk = 0, sh = 0;
-        GetTypeStats(denAttacker, denTarget, ref atk, ref sh);
-        var diff = atk - sh;
-
-        // if atk is greater, then discard target and player loses pp
-        if(diff > 0)
-        {
-            //print(denTarget.name + " defeated.");
-            currentTarget.player.LosePoints(Mathf.Abs(diff));
-            currentTarget.Destroy();
-            tributeMessage.gameObject.SetActive(false);            
-        }
-        else
-        {
-            currentAttacker.player.LosePoints(Mathf.Abs(diff));
-            tributeMessage.text = "not stronk enough";
-        }
-
-        // after attack
-        currentAttacker.hasAttacked = true;
-
-        currentTarget = null;
-        currentAttacker = null;
-
-        // check if we go to POST
-        bool canStillAttack = false;
-        foreach(var c in field)
-        {
-            if (!c.hasAttacked)
-            {
-                canStillAttack = true;
-                break;
-            }
-        }
-        if (!canStillAttack)
-            SetTurnState(TurnState.POST);
-
-    }
 
     void GetTypeStats(DenigenData attacker, DenigenData target, ref int atk, ref int sh)
     {
@@ -404,6 +177,206 @@ public class Player : MonoBehaviour {
         GameControl.control.NextTurn();
     }
 
+    #region Deck
+    void PopulateDeck()
+    {
+        deck = new List<CardData>();
+        foreach (var s in deckStr)
+        {
+            var cd = GameControl.CardManager.cardDatabase.Find(s);
+            deck.Add(cd);
+        }
+    }
+
+    void ShuffleDeck()
+    {
+        for (int i = 0; i < deck.Count; i++)
+        {
+            var temp = deck[i];
+            int randomIndex = Random.Range(i, deck.Count);
+            deck[i] = deck[randomIndex];
+            deck[randomIndex] = temp;
+        }
+    }
+
+    void PrintDeck()
+    {
+        foreach (var c in deck)
+        {
+            print(c.name);
+        }
+    }
+    #endregion
+    #region Draw
+    public void DrawStartGame()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            Draw();
+        }
+    }
+
+    public void DrawStartTurn()
+    {
+        if (turnState != TurnState.DRAW)
+            return;
+        Draw();
+        SetTurnState(TurnState.SUMMON);
+    }
+
+    void Draw()
+    {
+        if (deck.Count <= 0)
+        {
+            Debug.LogWarning("Deck is empty");
+            return;
+        }
+        // remove card from deck
+        var drawCard = deck[0];
+        deck.RemoveAt(0);
+
+        // create card based on carddata drawn
+        GameObject cardObj;
+        if (GameControl.control.cardObjBank.Count > 0)
+        {
+            cardObj = GameControl.control.cardObjBank[0];
+            GameControl.control.cardObjBank.RemoveAt(0);
+            cardObj.transform.SetParent(handPos.transform);
+            cardObj.transform.position = handPos.transform.position;
+            cardObj.SetActive(true);
+        }
+        else
+        {
+            cardObj = Instantiate(GameControl.control.CardPrefab, handPos.transform);
+        }
+        var card = cardObj.GetComponent<Card>();
+        card.Init(drawCard, this);
+
+        if (hand.Count > 0)
+        {
+            card.transform.position = hand[hand.Count - 1].transform.position;
+            card.transform.position += new Vector3(drawDistance, 0, 0);
+        }
+
+        hand.Add(card);
+    }
+    #endregion
+    #region Summon
+    void BeginNormalSummon(Card summon)
+    {
+        cardHandleState = CardHandleState.TRIBUTE;
+        cardToSummon = summon;
+        tributedCards = new List<Card>();
+        ConfirmNormalSummon();
+    }
+
+    public void ConfirmNormalSummon()
+    {
+        if (tributedCards.Count < cardToSummon.Stars - 1)
+        {
+            GameControl.control.tributeMessage.gameObject.SetActive(true);
+            GameControl.control.tributeMessage.text = "Select cards for tribute.";
+        }
+        else
+        {
+            GameControl.control.tributeMessage.gameObject.SetActive(true);
+            readyToNormalSummon = true;
+            GameControl.control.tributeMessage.text = "Up arrow = summon faceup\nDown Arrow = summon facedown";
+        }
+    }
+
+    void Summon(bool facedown)
+    {
+        foreach (var c in tributedCards)
+            c.Discard();
+        cardToSummon.Summon(facedown);
+
+        if (readyToNormalSummon)
+        {
+            readyToNormalSummon = false;
+            normalSummonsPerformed++;
+        }
+        cardToSummon = null;
+        tributedCards.Clear();
+        GameControl.control.tributeMessage.gameObject.SetActive(false);
+    }
+    #endregion
+    #region Target/Attack
+    void BeginTarget(Card card)
+    {
+        if (OpponentTargetsExist() && !card.hasAttacked)
+        {
+            currentAttacker = card;
+            cardHandleState = CardHandleState.TARGET;
+            GameControl.control.tributeMessage.text = "Select target";
+            GameControl.control.tributeMessage.gameObject.SetActive(true);
+        }
+    }
+
+    bool OpponentTargetsExist()
+    {
+        foreach (var p in GameControl.control.playerList)
+        {
+            if (p == this) continue;
+
+            if (p.field.Count > 0) return true;
+        }
+        return false;
+    }
+
+    public void BeginAttack(Card target)
+    {
+        SetTurnState(TurnState.ATTACK);
+        cardHandleState = CardHandleState.NORMAL;
+        currentTarget = target;
+
+        if (currentAttacker.face == Card.Face.FACEDOWN)
+            currentAttacker.FlipCard();
+        if (currentTarget.face == Card.Face.FACEDOWN)
+            currentTarget.FlipCard();
+
+        var denAttacker = currentAttacker.dataInstance as DenigenData;
+        var denTarget = currentTarget.dataInstance as DenigenData;
+
+        int atk = 0, sh = 0;
+        GetTypeStats(denAttacker, denTarget, ref atk, ref sh);
+        var diff = atk - sh;
+
+        // if atk is greater, then discard target and player loses pp
+        if (diff > 0)
+        {
+            currentTarget.player.LosePoints(Mathf.Abs(diff));
+            currentTarget.Destroy();
+            GameControl.control.tributeMessage.gameObject.SetActive(false);
+        }
+        else
+        {
+            currentAttacker.player.LosePoints(Mathf.Abs(diff));
+            GameControl.control.tributeMessage.text = "not stronk enough";
+        }
+
+        // after attack
+        currentAttacker.hasAttacked = true;
+
+        currentTarget = null;
+        currentAttacker = null;
+
+        // check if we go to POST
+        bool canStillAttack = false;
+        foreach (var c in field)
+        {
+            if (!c.hasAttacked)
+            {
+                canStillAttack = true;
+                break;
+            }
+        }
+        if (!canStillAttack)
+            SetTurnState(TurnState.POST);
+
+    }
+    #endregion
+    #region Update
     private void Update()
     {
         if (turnState == TurnState.DRAW)
@@ -433,7 +406,6 @@ public class Player : MonoBehaviour {
 
         turnStateUI.text = turnState.ToString();
         cardHandleStateUI.text = cardHandleState.ToString();
-        normalSummonsUI.text = normalSummonsPerformed.ToString();
         powerpointsUI.text = powerpoints.ToString();
     }
 
@@ -456,4 +428,5 @@ public class Player : MonoBehaviour {
     void UpdatePost() { }
     void UpdateStandby() { }
     void UpdateOutOfGame() { }
+    #endregion
 }
