@@ -1,93 +1,93 @@
-key	Name	Stars	Type	Atk	Sh	Effect	Str	Wk	Rst
-bronky	Bronky	1	PSY	12	18	If Dawnage or Duskray is in your hand you may discard Bronky from the field to special summon one.	5	MYS/AST	LGT/PSN
-sandwitch	Sand Witch	1	RCK	25	9	None	5	WAT/GRS	FLY/ETR 
-guynormous	Guynormous	2	WAT	48	0	When this card defeats a denigen, if the carry over damage is less than 10 points, you may choose to convert the carry over to SH points.	7	ETR/GRS	FIR/RCK
-skidit	Skidit	1	ETR/RCK	20	10	Can deal 5 points of Direct Damage instead of the Attack phase.	5	PLT/GRS	ETR/FLY/WAT 
-solvienta	Solvienta	2	AST	28	20	When played, change the type of one other denigen, excluding RNB type.	7	PSN/MYS	PSY/PLT
-gascon	Gascon	1	PSN 	0	30	When destroyed, the denigen that destroyed this card becomes poisoned and its shield is decreased by one point until that denigen is destroyed.	5	DRK/PSY	AST/ICE
-goikko	Goikko	1	GRS/WAT	15	15	If destroyed, the opponent receives 3 pp of direct damage for each star of the attacking denigen.	5	LGT/FLY	WAT/FIR/RCK
-guy	Guy	1	WAT 	16	18	None	5	GRS/ETR	FIR/RCK
-veneficia	Veneficia	1	AST	23	7	For every denigen that this card defeats, gain 5 power points.	5	MYS/PSN	PSY/PLT
-duskray	Duskray	2	PSN/DRK	25	23	When summoned, increase ATK & SH by 1 for each Bronky, Dawnage & Duskray in the discard pile.	7	DRG/LGT/PSY	AST/PSN/ICE/MYS
-magnerox	Magnerox	1	ETR/PLT	15	15	When summoned face-up, you may draw a card.	5	ICE/RCK/AST	FLY/ETR/WAT/DRG
-etib	Etib	1	RCK	23	7	When this denigen destroys an opponent's denigen, replace Etib with another 1-star denigen from your deck.	5	GRS/WAT	ETR/FLY 
-northernstars	The Northern Stars	1	DRK/AST	23	7	When summoned face-up, this card flips all opponents' denigens to face-up position.	5	DRG/LGT	PLT/PSN/PSY/MYS
-crabgrass	Crabgrass	2	GRS/RCK	18	30	Gain 3 power points for every turn you remember.	7	FIR	ETR/FLY/WAT/RCK
-helogi	Helogi	1	ETR	30	0	For every denigen Helogi defeats, gain a shield equal to 4 times the star value of the defeated denigen.	5	PLT/RCK 	FLY/WAT
-mudpuppy	Mudpuppy	1	WAT/GRS	34	5	None	5	LGT/FLY	RCK/WAT/FIR
-chenille	Chenille	1	GRS 	16	14	When this denigen is destroyed, draw another card.	5	FLY/FIR	WAT/RCK
-gublia	Gublia	1	DRG/FLY	10	20	If defeated by a card higher than its level, destroy the defeating card.	5	PLT/RCK/ICE/LGT	DRK/FIR/LGT/GRS
-gible	Gible	1	GRS/PSN	18	12	When destroyed, you may take a card out of your discard pile and place it in your hand.	5	DRK/FLY/PSY/FIR	AST/RCK/ICE
-mirmouse	Mirmouse	1	PLT	5	34	None	5	ICE/AST	DRG/LGT
-gub	Gub 	1	DRG	17	13	When Gub is destroyed summon one level 1 denigen from your deck or hand to the field.	5	ICE/PLT	DRK/LGT
-meserg	Meserg	1	PLT	12	18	When destroyed, a denigen with at least as many stars as the destroying card may be summoned to your field.	5	ICE/AST	DRG/LGT
-ecafon	Ecafon	1	MYS	0	30	Cannot be harmed by single type denigens, excluding its weaknesses.	5	DRK/LGT	PSY/AST
-dawnage	Dawnage	2	LGT/FLY	23	25	When destroyed, special summon a Bronky from anywhere.	7	DRG/RCK/PSY/ETR	MYS/FIR/GRS/DRK
-snuckle	Snuckle	1	RCK/WAT	7	32	None	5	GRS	FIR/ETR/RCK/FLY
-shenanigan	Shenanigan	1	LGT	17	22	None	5	DRG/FLY	DRK/MYS
-sorillian	Sorillian	1	PSN/WAT	23	16	None	5	DRK/ETR/PSY/GRS	FIR/ICE/RCK/AST
-mortum	Mortum	1	DRK	15	15	The denigen who destroys this card is also destroyed. (Flip Effect only)	5	LGT/DRG	MYS/PSN
-brassmonkey	Brass Monkey	3	MYS/FIR	40	26	When played, choose an opponent's denigen. That denigen cannot attack or destroy Brass Monkey.	9	WAT/LGT/FLY/DRK	GRS/AST/ICE/PSY
-lingula	Lingula	1	LGT	15	15	This card counts as a 2 card tribute. (Cannot be special summoned)	5	DRG/PSY	DRK/MYS
-provaricado	Provaricado	1	FLY	3	27	Flip up one facedown card when played, and only when it is played.	5	ETR/RCK	FIR/GRS
-kosar	Kosar	1	ETR	16	14	Must be attacked twice to be destroyed completely. Carry over all damage calculations.	5	PLT/RCK	FLY/WAT
-fumalore	Fumalore	2	FLY	24	24	5	ETR/RCK	FIR/GRS	The tributed card goes to the hand and not the discard pile.
-incorporealan	Incorporealan	3	DRK/PSN	38	28	9	LGT/PSY	MYS/AST/PSN/ICE	For every turn you remember, subtract 4 Power Points from your opponent(s).
-	Ruswall	3	ICE/WAT	70	0	9	ETR/PSN/GRS	PLT/FIR/DRG/RCK	None
-kereas	Kereas	2	PDX	22	30	7	All	None	None
-	Ereimul	4	DRG/LGT	40	48	12	PLT/PSY/ICE	DRK/MYS/LGT	None
-voldora	Voldora	3	FIR/DRG	24	42	9	FLY/PLT/WAT	LGT/GRS/DRK/ICE	When summoned, add 3 ATK pts for each DRG type in your discard pile.
-songbird	Songbird	3	FLY	29	41	9	ETR/RCK	FIR/GRS	None
-strato	Strato	4	PSY/DRK	36	48	12	DRG/AST	PSN/MYS/LGT	This card may be normal summoned as if a three star denigen, but it may not attack on its first turn.
-herba	Herba	2	GRS	18	30	7	FIR/FLY	RCK/WAT	If any denigen on your side of the field is destroyed, while this card is on the field (including this denigen), destroy the attacking denigen. This effect works only once.
-	Tyrannoborg	2	DRG/PLT	26	22	7	AST/ICE	LGT/DRG/DRK/ETR	If it attacks a card that this card is weak to, add 5 ATK
-yternalor	Yternalor	2	MYS	34	14	7	DRK/LGT	PSY/AST	In order to destroy this card, the opposing denigen must have at least 10 points of total attack (including its strength) higher than this card's shield.
-omnicid	Omnicid	2	FIR/ICE	30	22	7	FLY/WAT/PSN	DRG/GRS/ICE/PLT	None
-kralla	Krall A	2	WAT	27	25	7	ETR/GRS	FIR/RCK	None
-krallb	Krall B	2	WAT	25	23	7	ETR/GRS	FIR/RCK	This card may be normal summoned without discarding. At the start of your second turn, you must discard this card.
-zeebee	Zeebee	2	ETR	28	20	7	PLT/RCK	FLY/WAT	May attack twice on first turn out.
-momus	Momus	2	RNB	17	31	7	RNB	None	When destroyed, replace with a card of equal or lesser value.
-maegron	Maegron	2	FIR	36	21	7	FLY/WAT	GRS/ICE	None
-highshenanigan	High Shenanigan	2	PSY/LGT	22	35	7	DRG/AST	LGT/MYS/PSN/DRK	None
-arborn	Arborn	2	GRS	21	27	7	FIR/FLY	RCK/WAT	When destroyed, transforms into a protective power magic, nullifying one destruction against the card to whom it is attached.
-tungestin	Tungestin	2	MYS	19	29	7	DRK/LGT	AST/PSY	When summoned, choose a type and add 1 ATK & SH for each card of that type in the discard pile.
-adiposeron	Adiposeron	5	DRG/ICE	36	66	15	FIR/PSN	PLT/DRK/DRG/LGT	When in play, this is the only card on your field which may be attacked.
-babychicka	Baby Chicka	1	FLY	10	20	5	ETR/RCK	FIR/GRS	When summoned face up this card cannot be attacked on its first turn.
-crestian	Crestian	2	ICE 	24	24	5	PSN/FIR	DRG/PLT	Cannot be defeated by a higher level denigen.
-	Wushu	2	DRK 	32	20	7	LGT/DRG	MYS/PSN	None
-blackchicka	Black Chicka	3	DRK/FLY	40	26	9	DRG/LGT/ETR/RCK	FIR/GRS/PSN/MYS	If a denigen exploits one of Black Chicka's weaknesses, the attacking denigen is destroyed as well.
-kradow	Kradow	4	DRK/PSN	57	27	12	LGT/PSN	MYS/AST/PSN/ICE	When this denigen destroys a denigen on an opponent's field, attain power points equal to 4 times the number of stars the victim possesses.
-nhoj	Nhoj	3	PLT	33	33	9	AST/ICE	DRG/ETR	When this card is played, reduce the shield of all denigens by 5.
-twiggs	Twiggs	3	GRS	26	40	9	FLY/FIR	WAT/RCK	For every denigen that Twiggs destroys you may draw one card.
-silvora	Silvora	4	AST/FLY	56	28	12	ETR/MYS/RCK/PSN	FIR/PLT/GRS/PSY	When Silvora is defeated, provide all of your denigens with a +10 shield boost.
-flama	Flama	2	GRS/LGT	23	25	7	FLY/DRG/FIR/PSY	MYS/WAT/DRK/RCK	If defeated by one of Flama's weaknesses, you may draw three cards.
-holiday	Holiday	1	RNB	30	0	5	RNB	None	While this card is on the field, take no direct damage. If defeated, take no carryover damage.
-pitch	Pitch	4	RCK	0	84	12	GRS/WAT	ETR/FLY	May switch his attack and shield once per turn. This effect may be used as many times as desired.
-rubi	Rubi	4	PSN/PSY	38	46	12	MYS/DRK	ICE/PSN/AST/LGT	Once per turn, in place of Rubi's attack, you may stop one denigen from attacking or being sacrified.
-phantasma	Phantasma	3	MYS	27	39	9	DRK/LGT	AST/PSY	If attacking a one star denigen, destroy instantly, having no carryover damage.
-demonocle	Demonocle	3	PSY	29	37	9	MYS/AST	LGT/PSN	Flip up one facedown card per turn, before your attack phase. May be used every turn.
-darklown	Darklown	4	PSN/PSY	46	38	12	DRK/MYS	PSN/ICE/LGT/AST	For every denigen this card defeats, special summon a one star denigen from the discard pile.
-diminius	Diminius Dequay	4	FIR/DRK	42	42	12	WAT/DRG/FLY/LGT	ICE/PSN/GRS/MYS	For every denigen in the discard pile at the time this card as played, it will gain 1 point in each stat.
-eternos	Eternos	5	PDX	56	50	15	All	None	None
-phoenix	Phoenix	3	FIR 	55	15	9	WAT/FLY	ICE/GRS	None
-tempest	Tempest	3	WAT/ETR	30	36	9	PLT/GRS	FLY/WAT/FIR/RCK	For every WAT or ETR type this card defeats, gain 5 shield.
-infinicid	Infinicid	4	RNB	66	22	12	RNB	None	None
-slimm	Slimm	3	RCK/ICE	32	34	9	WAT/FIR/GRS/PSN	ETR/PLT/FLY/DRG	If Grimm is on your side of the field, you may choose to combine his attack with Slimm's.
-grimm	Grimm	3	RCK/ICE	32	34	9	WAT/FIR/GRS/PSN	ETR/PLT/FLY/DRG	If Slimm is on your side of the field, you may choose to combine his attack with Grimm's.
-ohmega	Ohmega	4	ETR	46	42	12	PLT/RCK	FLY/WAT 	None
-geodon	Geodon	4	RCK	55	38	12	WAT/GRS	ETR/FLY	None
-stark	Stark	2	ICE	43	5	7	PSN/FIR	DRG/PLT	When targeted by an attack, Stark can make a denigen on your side of the field the new target. This effect can only be used once per turn.
-beezlebug	Beezlebug	2	FLY/PSN	29	19	9	DRK/ETR/PSY/RCK	FIR/GRS/AST/ICE	Any time Power Points are inflicted with this denigen, reshuffle the cards of the victim's hand into their deck, and have them redraw the same number of cards.
-lunara	Lunara	5	MYS	82	20	15	DRK/LGT	AST/PSY	Cannot be defeated by a one star denigen.
-relic	Relic	4	PDX	51	33	12	All	None	Is not affected by turn-based Powermagics or effects
-	Kesharami	3	DRG/WAT	43	27	9	ETR/GRS/ICE/PLT	FIR/DRK/LGT/RCK	None
-morttimer	Morttimer	5	RNB	56	46	15	RNB	None	May destroy one card on the field at any appointed time, within the parameters of your turn. This means you can only destroy one card total. One.
-harmonius	Harmonius	3	LGT	0	66	9	DRG/PSY	DRK/MYS	While on the field, Harmonius will lower the attack of every opposing denigen currently on the field by 5.
-dogmalore	Dogmalore	4	FLY	37	50	12	ETR/RCK	FIR/GRS	None
-tacitus	Tacitus	3	LGT	23	43	9	DRG/PSY	DRK/MYS	Not affected by enemy spells.
-beasteria	Beasteria	4	FIR/PLT	62	22	12	FLY/WAT/AST	DRG/GRS/ETR/ICE	For each card this card destroys, increase Beasteria's shield by 9.
-jericho	Jericho	3	AST	31	39	9	MYS/PSN	PLT/PSY	None
-dorian	Dorian the Conductor	4	RNB	33	51	12	RNB	None	At any time during your turn, this denigen may negate the effects of either one Power Magic or one denigen. May be used once. Can be used in response to flip-effects.
-sumware	Sumware	4	GRS	4	80	12	FIR/FLY	RCK/WAT	Increase the shield of one denigen on your field, besides Sumware, by 5. This effect can be used once, and only once, not necessarily when played.
-necrozia	Necrozia	5	AST	71	31	15	MYS/PSN	PLT/PSY	May take one Power Magic from your discard pile, and use it as a replacement for your attack for a turn. May be used once per turn, and only once, unless otherwise allowed by a Power Magic.
-thunderbird	Thunderbird	4	LGT/FLY	37	47	12	PLT/RCK	FIR/FLY/GRS/WAT	While on your field, this is the only denigen which can be attacked or destroyed.
+key	Name	Stars	Type	Atk	Sh	Effect		Str	Old Type	Wk	Rst
+bronky	Bronky	1	Earth	12	18	If Dawnage or Duskray is in your hand you may discard Bronky from the field to special summon one.	summoning	5	PSY	MYS/AST	LGT/PSN
+sandwitch	Sand Witch	1	Earth	25	9	None	none	5	RCK	WAT/GRS	FLY/ETR 
+guynormous	Guynormous	2	Water	48	0	When this card destroys a denigen, if the carry over damage is less than 10 points, you may choose to convert the carry over to SH points.	OnDestroy	7	WAT	ETR/GRS	FIR/RCK
+skidit	Skidit	1	Metal	20	10	Can deal 5 points of Direct Damage instead of the Attack phase.	attacking	5	ETR/RCK	PLT/GRS	ETR/FLY/WAT 
+solvienta	Solvienta	2	Star	28	20	When played, change the type of one other denigen, excluding RNB type.	OnSummon	7	AST	PSN/MYS	PSY/PLT
+gascon	Gascon	1	Spirit	0	30	When destroyed, the denigen that destroyed this card becomes poisoned and its shield is decreased by one point until that denigen is destroyed.	OnDeath	5	PSN 	DRK/PSY	AST/ICE
+goikko	Goikko	1	Wood	15	15	If destroyed, the opponent receives 3 pp of direct damage for each star of the attacking denigen.	OnDeath	5	GRS/WAT	LGT/FLY	WAT/FIR/RCK
+guy	Guy	1	Water	16	18	None	none	5	WAT 	GRS/ETR	FIR/RCK
+veneficia	Veneficia	1	Star	23	7	For every denigen that this card destroys, gain 5 power points.	OnDestroy	5	AST	MYS/PSN	PSY/PLT
+duskray	Duskray	2	Void	25	23	When summoned, increase ATK & SH by 1 for each Bronky, Dawnage & Duskray in the discard pile.	OnSummon	7	PSN/DRK	DRG/LGT/PSY	AST/PSN/ICE/MYS
+magnerox	Magnerox	1	Electric	15	15	When summoned face-up, you may draw a card.	OnSummon	5	ETR/PLT	ICE/RCK/AST	FLY/ETR/WAT/DRG
+etib	Etib	1	Earth	23	7	When this denigen destroys an opponent's denigen, place Etib back into the deck and replace with another 1-star denigen from your deck. If Etib is destroyed in the attack, this card is sent to the discard pile instead.	OnDestroy	5	RCK	GRS/WAT	ETR/FLY 
+northernstars	The Northern Stars	1	Void	23	7	When summoned face-up, this card flips all opponents' denigens to face-up position.	OnSummon	5	DRK/AST	DRG/LGT	PLT/PSN/PSY/MYS
+crabgrass	Crabgrass	2	Wood	18	30	Gain 3 power points for every turn you remember.	summoning	7	GRS/RCK	FIR	ETR/FLY/WAT/RCK
+helogi	Helogi	1	Fire	30	0	For every denigen Helogi destroys, gain a shield equal to 4 times the star value of the destroyed denigen.	OnDestroy	5	ETR	PLT/RCK 	FLY/WAT
+mudpuppy	Mudpuppy	1	Water	34	5	None	none	5	WAT/GRS	LGT/FLY	RCK/WAT/FIR
+chenille	Chenille	1	Wood	16	14	When this denigen is destroyed, draw another card.	OnDeath	5	GRS 	FLY/FIR	WAT/RCK
+gublia	Gublia	1	Fire	10	20	If destroyed by a card higher than its level, destroy the attacking card.	OnDeath	5	DRG/FLY	PLT/RCK/ICE/LGT	DRK/FIR/LGT/GRS
+gible	Gible	1	Wood	18	12	When destroyed, take a card out of your discard pile and place it in your hand.	OnDeath	5	GRS/PSN	DRK/FLY/PSY/FIR	AST/RCK/ICE
+mirmouse	Mirmouse	1	Metal	5	34	None	none	5	PLT	ICE/AST	DRG/LGT
+gub	Gub 	1	Fire	17	13	When Gub is destroyed summon one level 1 denigen from your deck or hand to the field.	OnDeath	5	DRG	ICE/PLT	DRK/LGT
+meserg	Meserg	1	Metal Spirit	12	18	When destroyed, a denigen with at least as many stars as the destroying card may be summoned to your field.	OnDeath	5	PLT	ICE/AST	DRG/LGT
+ecafon	Ecafon	1	Earth Spirit	0	30	Cannot be attacked by single type denigens, excluding its weaknesses.	OnTarget	5	MYS	DRK/LGT	PSY/AST
+dawnage	Dawnage	2	Seeker	23	25	When destroyed, special summon a Bronky from anywhere.	OnDeath	7	LGT/FLY	DRG/RCK/PSY/ETR	MYS/FIR/GRS/DRK
+snuckle	Snuckle	1	Earth	7	32	None	none	5	RCK/WAT	GRS	FIR/ETR/RCK/FLY
+shenanigan	Shenanigan	1	Psychic	17	22	None	none	5	LGT	DRG/FLY	DRK/MYS
+sorillian	Sorillian	1	Water	23	16	None	none	5	PSN/WAT	DRK/ETR/PSY/GRS	FIR/ICE/RCK/AST
+mortum	Mortum	1	Void	15	15	The denigen who destroys this card is also destroyed. (Flip Effect only)	OnDeath	5	DRK	LGT/DRG	MYS/PSN
+brassmonkey	Brass Monkey	3	Fire Spirit	40	26	When played, choose an opponent's denigen. That denigen cannot attack or destroy Brass Monkey.	OnSummon	9	MYS/FIR	WAT/LGT/FLY/DRK	GRS/AST/ICE/PSY
+lingula	Lingula	1	Seeker	15	15	This card counts as a 2 card tribute. (Cannot be special summoned)	summoning	5	LGT	DRG/PSY	DRK/MYS
+provaricado	Provaricado	1	Psychic	3	27	Flip up one facedown card when played, and only when it is played.	OnSummon	5	FLY	ETR/RCK	FIR/GRS
+kosar	Kosar	1	Electric	16	14	Must be attacked twice to be destroyed completely. Carry over all damage calculations.	attacking	5	ETR	PLT/RCK	FLY/WAT
+fumalore	Fumalore	2		24	24	The tributed card goes to the hand and not the discard pile.	OnSummon	5	FLY	ETR/RCK	FIR/GRS
+incorporealan	Incorporealan	3	Water Spirit	38	28	For every turn you remember, subtract 4 Power Points from your opponent(s).	summoning	9	DRK/PSN	LGT/PSY	MYS/AST/PSN/ICE
+	Ruswall	3		70	0	None	none	9	ICE/WAT	ETR/PSN/GRS	PLT/FIR/DRG/RCK
+kereas	Kereas	2	Spirit	22	30	None	none	7	PDX	All	None
+	Ereimul	4		40	48	None	none	12	DRG/LGT	PLT/PSY/ICE	DRK/MYS/LGT
+voldora	Voldora	3	Fire	24	42	When summoned, add 3 ATK pts for each DRG type in your discard pile.	OnSummon	9	FIR/DRG	FLY/PLT/WAT	LGT/GRS/DRK/ICE
+songbird	Songbird	3	Seeker	29	41	None	none	9	FLY	ETR/RCK	FIR/GRS
+strato	Strato	4	Psychic	36	48	This card may be normal summoned as if a three star denigen, but it may not attack on its first turn.	special	12	PSY/DRK	DRG/AST	PSN/MYS/LGT
+herba	Herba	2	Wood	18	30	If any denigen on your side of the field is destroyed, while this card is on the field (including this denigen), destroy the attacking denigen. This effect works only once.	attacking	7	GRS	FIR/FLY	RCK/WAT
+	Tyrannoborg	2		26	22	If it attacks a card that this card is weak to, add 5 ATK		7	DRG/PLT	AST/ICE	LGT/DRG/DRK/ETR
+yternalor	Yternalor	2	Void	34	14	In order to destroy this card, the opposing denigen must have at least 10 points of total attack (including its strength) higher than this card's shield.	OnTarget	7	MYS	DRK/LGT	PSY/AST
+omnicid	Omnicid	2	Star	30	22	None	none	7	FIR/ICE	FLY/WAT/PSN	DRG/GRS/ICE/PLT
+kralla	Krall A	2	Water	27	25	None	none	7	WAT	ETR/GRS	FIR/RCK
+krallb	Krall B	2	Water	25	23	This card may be normal summoned without discarding. At the start of your second turn, you must discard this card.	special	7	WAT	ETR/GRS	FIR/RCK
+zeebee	Zeebee	2	Electric	28	20	May attack twice on first turn out.	OnAttack	7	ETR	PLT/RCK	FLY/WAT
+momus	Momus	2	Star	17	31	When destroyed, replace with a card of equal or lesser value.	OnDeath	7	RNB	RNB	None
+maegron	Maegron	2	Fire	36	21	None	none	7	FIR	FLY/WAT	GRS/ICE
+highshenanigan	High Shenanigan	2	Psychic	22	35	None	none	7	PSY/LGT	DRG/AST	LGT/MYS/PSN/DRK
+arborn	Arborn	2	Wood	21	27	When destroyed, transforms into a protective power magic, nullifying one destruction against the card to whom it is attached.	On Death	7	GRS	FIR/FLY	RCK/WAT
+tungestin	Tungestin	2	Metal	19	29	When summoned, choose a type and add 1 ATK & SH for each card of that type in the discard pile.	OnSummon	7	MYS	DRK/LGT	AST/PSY
+adiposeron	Adiposeron	5		36	66	When in play, this is the only card on your field which may be attacked.	OnTarget	15	DRG/ICE	FIR/PSN	PLT/DRK/DRG/LGT
+babychicka	Baby Chicka	1	Seeker	10	20	When summoned face up this card cannot be attacked or destroyed on its first turn.	OnTarget	5	FLY	ETR/RCK	FIR/GRS
+crestian	Crestian	2	Earth	24	24	Cannot be attacked by a higher level denigen.	OnTarget	5	ICE 	PSN/FIR	DRG/PLT
+	Wushu	2		32	20	None		7	DRK 	LGT/DRG	MYS/PSN
+blackchicka	Black Chicka	3	Void	40	26	If a denigen exploits one of Black Chicka's weaknesses, the attacking denigen is destroyed as well.	OnDeath	9	DRK/FLY	DRG/LGT/ETR/RCK	FIR/GRS/PSN/MYS
+kradow	Kradow	4	Spirit	57	27	When this denigen destroys a denigen on an opponent's field, attain power points equal to 4 times the number of stars the victim possesses.	OnDestroy	12	DRK/PSN	LGT/PSN	MYS/AST/PSN/ICE
+nhoj	Nhoj	3	Metal	33	33	When this card is played, reduce the shield of all denigens by 5.	OnSummon	9	PLT	AST/ICE	DRG/ETR
+twiggs	Twiggs	3	Wood	26	40	For every denigen that Twiggs destroys you may draw one card.	OnDestroy	9	GRS	FLY/FIR	WAT/RCK
+silvora	Silvora	4	Star	56	28	When Silvora is defeated, provide all of your denigens with a +10 shield boost.	OnDeath	12	AST/FLY	ETR/MYS/RCK/PSN	FIR/PLT/GRS/PSY
+flama	Flama	2	Wood	23	25	If defeated by one of Flama's weaknesses, you may draw three cards.	OnDeath	7	GRS/LGT	FLY/DRG/FIR/PSY	MYS/WAT/DRK/RCK
+holiday	Holiday	1	Star	30	0	While this card is on the field, take no direct damage. If defeated, take no carryover damage.	special	5	RNB	RNB	None
+pitch	Pitch	4	Earth	0	84	May switch his attack and shield once per turn. This effect may be used as many times as desired.	summoning	12	RCK	GRS/WAT	ETR/FLY
+rubi	Rubi	4	Psychic	38	46	Once per turn, in place of Rubi's attack, you may stop one denigen from attacking or being sacrified.	attacking	12	PSN/PSY	MYS/DRK	ICE/PSN/AST/LGT
+phantasma	Phantasma	3	Spirit	27	39	If attacking a one star denigen, destroy instantly, having no carryover damage.	OnAttack	9	MYS	DRK/LGT	AST/PSY
+demonocle	Demonocle	3	Psychic	29	37	Flip up one facedown card per turn, before your attack phase. May be used every turn.	summoning	9	PSY	MYS/AST	LGT/PSN
+darklown	Darklown	4	Void	46	38	For every denigen this card defeats, special summon a one star denigen from the discard pile.	OnDestroy	12	PSN/PSY	DRK/MYS	PSN/ICE/LGT/AST
+diminius	Diminius Dequay	4	Fire Void	42	42	For every denigen in the discard pile at the time this card as played, it will gain 1 point in each stat.	OnSummon	12	FIR/DRK	WAT/DRG/FLY/LGT	ICE/PSN/GRS/MYS
+eternos	Eternos	5	Ascendant	56	50	None	none	15	PDX	All	None
+phoenix	Phoenix	3	Fire Star	55	15	None	none	9	FIR 	WAT/FLY	ICE/GRS
+tempest	Tempest	3	Electric Star	30	36	For every WAT or ETR type this card defeats, gain 5 shield.		9	WAT/ETR	PLT/GRS	FLY/WAT/FIR/RCK
+infinicid	Infinicid	4	Void	66	22	None	none	12	RNB	RNB	None
+slimm	Slimm	3	Earth Void	32	34	If Grimm is on your side of the field, you may choose to combine his attack with Slimm's.	OnTarget	9	RCK/ICE	WAT/FIR/GRS/PSN	ETR/PLT/FLY/DRG
+grimm	Grimm	3	Earth Void	32	34	If Slimm is on your side of the field, you may choose to combine his attack with Grimm's.	OnTarget	9	RCK/ICE	WAT/FIR/GRS/PSN	ETR/PLT/FLY/DRG
+ohmega	Ohmega	4	Electric Void	46	42	None	none	12	ETR	PLT/RCK	FLY/WAT 
+geodon	Geodon	4	Earth	55	38	None	none	12	RCK	WAT/GRS	ETR/FLY
+stark	Stark	2	Metal	43	5	When targeted by an attack, Stark can make a denigen on your side of the field the new target. This effect can only be used once per turn.	OnTarget	7	ICE	PSN/FIR	DRG/PLT
+beezlebug	Beezlebug	2	Psychic	29	19	Any time Power Points are inflicted with this denigen, reshuffle the cards of the victim's hand into their deck, and have them redraw the same number of cards.	OnAttack	9	FLY/PSN	DRK/ETR/PSY/RCK	FIR/GRS/AST/ICE
+lunara	Lunara	5	Ascendant	82	20	Cannot be defeated by a one star denigen.	OnTarget	15	MYS	DRK/LGT	AST/PSY
+relic	Relic	4	Ascendant	51	33	Is not affected by turn-based Powermagics or effects		12	PDX	All	None
+	Kesharami	3		43	27	None		9	DRG/WAT	ETR/GRS/ICE/PLT	FIR/DRK/LGT/RCK
+morttimer	Morttimer	5	Ascendant	56	46	May destroy one card on the field at any appointed time, within the parameters of your turn. This means you can only destroy one card total. One.	special	15	RNB	RNB	None
+harmonius	Harmonius	3	Ascendant	0	66	While on the field, Harmonius will lower the attack of every opposing denigen currently on the field by 5.		9	LGT	DRG/PSY	DRK/MYS
+dogmalore	Dogmalore	4	Ascendant	37	50	None		12	FLY	ETR/RCK	FIR/GRS
+tacitus	Tacitus	3	Ascendant	23	43	Not affected by enemy spells.		9	LGT	DRG/PSY	DRK/MYS
+beasteria	Beasteria	4	Ascendant	58	26	For each card this card destroys, increase Beasteria's shield by 9.	OnDestroy	12	FIR/PLT	FLY/WAT/AST	DRG/GRS/ETR/ICE
+jericho	Jericho	3	Ascendant	31	39	None		9	AST	MYS/PSN	PLT/PSY
+dorian	Dorian the Conductor	4	Ascendant	33	51	At any time during your turn, this denigen may negate the effects of either one Power Magic or one denigen. May be used once. Can be used in response to flip-effects.	special	12	RNB	RNB	None
+sumware	Sumware	4	Ascendant	4	80	Increase the shield of one denigen on your field, besides Sumware, by 5. This effect can be used once, and only once, not necessarily when played.		12	GRS	FIR/FLY	RCK/WAT
+necrozia	Necrozia	5	Ascendant	71	31	May take one Power Magic from your discard pile, and use it as a replacement for your attack for a turn. May be used once per turn, and only once, unless otherwise allowed by a Power Magic.	OnAttack	15	AST	MYS/PSN	PLT/PSY
+thunderbird	Thunderbird	4	Ascendant	37	47	While on your field, this is the only denigen which can be attacked or destroyed.	OnTarget	12	LGT/FLY	PLT/RCK	FIR/FLY/GRS/WAT
