@@ -25,7 +25,7 @@ public class GameControl : MonoBehaviour {
     public Player CurrentPlayer { get { return playerList[currentPlayerNum]; } }
     
     public Text tributeMessage;
-
+    
     private void Awake()
     {
         if (control == null)

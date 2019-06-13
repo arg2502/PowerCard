@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class Player : MonoBehaviour {
+public class Player : NetworkBehaviour {
 
     public List<string> deckStr; // public for testing
     public List<CardData> deck;
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour {
     public GameObject fieldPos;
     public List<CardSlot> denCardSlots;
     float drawDistance = 1.75f;
+    int startingHandNum = 7;
 
     public enum TurnState { STANDBY, DRAW, SUMMON, ATTACK, POST, OUTOFGAME }
     public TurnState turnState;
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour {
         powerpoints = 100;
         PopulateDeck();
         ShuffleDeck();
+        GameControl.control.playerList.Add(this);
     }
 
     public void SetTurnState(TurnState newState)
@@ -210,7 +213,7 @@ public class Player : MonoBehaviour {
     #region Draw
     public void DrawStartGame()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < startingHandNum; i++)
         {
             Draw();
         }
@@ -226,6 +229,9 @@ public class Player : MonoBehaviour {
 
     void Draw()
     {
+        if (!isLocalPlayer)
+            return;
+
         if (deck.Count <= 0)
         {
             Debug.LogWarning("Deck is empty");
@@ -234,31 +240,25 @@ public class Player : MonoBehaviour {
         // remove card from deck
         var drawCard = deck[0];
         deck.RemoveAt(0);
-
+        CmdDraw(drawCard.key);
         // create card based on carddata drawn
-        GameObject cardObj;
-        if (GameControl.control.cardObjBank.Count > 0)
-        {
-            cardObj = GameControl.control.cardObjBank[0];
-            GameControl.control.cardObjBank.RemoveAt(0);
-            cardObj.transform.SetParent(handPos.transform);
-            cardObj.transform.position = handPos.transform.position;
-            cardObj.SetActive(true);
-        }
-        else
-        {
-            cardObj = Instantiate(GameControl.control.CardPrefab, handPos.transform);
-        }
-        var card = cardObj.GetComponent<Card>();
-        card.Init(drawCard, this);
+        //GameObject cardObj;
+        //if (GameControl.control.cardObjBank.Count > 0)
+        //{
+        //    cardObj = GameControl.control.cardObjBank[0];
+        //    GameControl.control.cardObjBank.RemoveAt(0);
+        //    cardObj.transform.SetParent(handPos.transform);
+        //    cardObj.transform.position = handPos.transform.position;
+        //    cardObj.SetActive(true);
+        //}
+        //else
+        //{
+        //    cardObj = Instantiate(GameControl.control.CardPrefab, handPos.transform);
+        //}
+        //var card = cardObj.GetComponent<Card>();
+        //card.Init(drawCard, this);
 
-        if (hand.Count > 0)
-        {
-            card.transform.position = hand[hand.Count - 1].transform.position;
-            card.transform.position += new Vector3(drawDistance, 0, 0);
-        }
-
-        hand.Add(card);
+       
     }
     #endregion
     #region Summon
@@ -379,6 +379,13 @@ public class Player : MonoBehaviour {
     #region Update
     private void Update()
     {
+        turnStateUI.text = turnState.ToString();
+        cardHandleStateUI.text = cardHandleState.ToString();
+        powerpointsUI.text = powerpoints.ToString();
+
+        if (!isLocalPlayer)
+            return;
+
         if (turnState == TurnState.DRAW)
         {
             UpdateDraw();
@@ -403,10 +410,6 @@ public class Player : MonoBehaviour {
         {
             UpdateOutOfGame();
         }
-
-        turnStateUI.text = turnState.ToString();
-        cardHandleStateUI.text = cardHandleState.ToString();
-        powerpointsUI.text = powerpoints.ToString();
     }
 
     void UpdateDraw() { }
@@ -429,4 +432,39 @@ public class Player : MonoBehaviour {
     void UpdateStandby() { }
     void UpdateOutOfGame() { }
     #endregion
+
+    [Command]
+    void CmdDraw(string dataKey)
+    {
+        GameObject cardObj;
+        //if (GameControl.control.cardObjBank.Count > 0)
+        //{
+        //    cardObj = GameControl.control.cardObjBank[0];
+        //    GameControl.control.cardObjBank.RemoveAt(0);
+        //    cardObj.transform.SetParent(handPos.transform);
+        //    cardObj.transform.position = handPos.transform.position;
+        //    cardObj.SetActive(true);
+        //}
+        //else
+        //{
+            cardObj = Instantiate(GameControl.control.CardPrefab, handPos.transform);
+        //}
+        NetworkServer.SpawnWithClientAuthority(cardObj, connectionToClient);
+        RpcDraw(cardObj, dataKey);
+    }
+
+    [ClientRpc]
+    void RpcDraw(GameObject cardObj, string dataKey)
+    {
+        var card = cardObj.GetComponent<Card>();
+        var data = GameControl.CardManager.cardDatabase.Find(dataKey);
+        card.Init(data, this);
+        if (hand.Count > 0)
+        {
+            cardObj.transform.position = hand[hand.Count - 1].transform.position;
+            cardObj.transform.position += new Vector3(drawDistance, 0, 0);
+        }
+
+        hand.Add(card);
+    }
 }
